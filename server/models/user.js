@@ -48,9 +48,5 @@ const userSchema=new mongoose.Schema({
     expireToken:Date
 })
 
-// userSchema.methods.findUser=()=>{
-//     return this.model('User').find({email:this.email});
-// }
-
 mongoose.model("User",userSchema)
 

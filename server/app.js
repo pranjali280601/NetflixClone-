@@ -1,9 +1,10 @@
-const express=require('express')
-const app=express()
-const PORT= 5000
-const mongoose=require('mongoose')
-const {MONGOURI}=require('./config/dev')
-//mongoose.set('useFindAndModify', false);
+const express = require('express')
+const mongoose = require('mongoose')
+
+const app = express()
+const PORT = process.env.PORT || 7000
+
+const {MONGOURI} = require('./config/keys')
 
 mongoose.connect(MONGOURI,{
     
@@ -20,7 +21,8 @@ mongoose.connection.on('error',()=>{
 require('./models/user')
 require('./models/content')
 require('./models/stream')
-
+app.use(express.json())
+app.use(require('./routes/auth'))
 
 
 app.listen(PORT,()=>{

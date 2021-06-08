@@ -1,86 +1,73 @@
 const express = require("express")
-const router = express.Router()
 const mongoose=require('mongoose')
-const User=mongoose.model("User")
-const bcrypt=require("bcryptjs")
 const crypto=require('crypto')
-const jwt=require("jsonwebtoken")
-const{JWT_SECRET}=require('../config/dev')
+const bcrypt=require("bcryptjs")
+const { signUpEmail, resetPswdEmail }=require("../emailing")
 
-const nodemailer=require('nodemailer')
-const sendgridTransport=require('nodemailer-sendgrid-transport')
+const User=mongoose.model("User")
+
+const router = express.Router()
+
 mongoose.set('useFindAndModify', false);
 
-const { SENDGRID_API, EMAIL } = require("../config/dev")
-const transporter=nodemailer.createTransport(sendgridTransport({
-    auth:{
-        api_key:SENDGRID_API
+router.post('/signup',async(req,res)=>{
+    try{
+        const{name,email,password,pic}=req.body
+        if(!email || !name || !password)
+            return res.status(422).json({error:'Please add all credentials'})
+        await User.existingUser(email)
+        const hashedpassword = await bcrypt.hash(password,12)
+        const user=await User.create({email,password:hashedpassword,name,pic})
+        await user.save()
+        await signUpEmail(user)
+        res.json({message:"Saved successfully"})
+            
+    }catch(err){
+        return res.status(422).json({error:err.message})
     }
-}))
+})
+ 
+router.post('/signin',async(req,res)=>{
+    try{
+        const{email,password}=req.body
+        if(!email || !password)
+            return res.status(422).json({error:'Please add all credentials'})
+        const savedUser = await User.findByEmailAndPassword(email,password)
+        const token = savedUser.generateToken()
+        res.json({message:"Successfully signed in",token})
+    }catch(err){
+        return res.status(422).json({error:err.message})
+    }     
+})
 
-router.post('/signup',(req,res)=>{
-    const{name,email,password,pic}=req.body
-    if(!email || !name || !password)
-    {
-       return res.status(422).json({error:'Please add all credentials'})
-    }
-    User.findOne({email:email})
-    .then((savedUser)=>{
-        if(savedUser){
-            return res.status(422).json({error:"User email already exists"})
+router.post("/resetpassword",async(req,res)=>{
+    const {email}=req.body
+    crypto.randomBytes(32,async (err,buffer)=>{
+        try{
+            if(err) console.log(err)
+            const token = buffer.toString("hex")
+            const user = await User.findByEmail(email)
+            user.resetToken = token
+            user.expireToken = Date.now()+3600000
+            await user.save()
+            await resetPswdEmail(user,token)
+            res.json({message:"Check your email",token})
+        }catch(err){
+            return res.status(422).json({error:err.message})
         }
-        bcrypt.hash(password,12).then(hashedpassword=>{
-            const user=new User({
-                email,
-                password:hashedpassword,
-                name,
-                pic
-            })
-            user.save()
-            .then(user=>{
-                transporter.sendMail({
-                    to:user.email,
-                    from:"pranjalsharma2806@gmail.com",
-                    subject:"Signup Success",
-                    html:"<h1>Welcome to Netflix</h1>"
-                })
-                res.json({message:"Saved successfully"})
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-        })
-        
-    }).catch(err=>{
-        console.log(err)
     })
 })
-router.post('/signin',(req,res)=>{
-    const{email,password}=req.body
-    if(!email || !password)
-    {
-       return res.status(422).json({error:'Please add all credentials'})
+
+router.post("/newpassword",async(req,res)=>{
+    try{
+        const { newPassword, sentToken }=req.body
+        await User.resetSession(sentToken, newPassword)
+        res.json({message:"Password Updated Succesfully"})
+    }catch(err){
+        return res.status(422).json({error:err})
     }
-    User.findOne({email:email})
-    .then((savedUser)=>{
-        if(!savedUser){
-            return res.status(422).json({error:"Incorrect email or password"})
-        }
-        bcrypt.compare(password,savedUser.password)
-        .then(doMatch=>{
-            if(doMatch){
-                const token=jwt.sign({_id:savedUser._id},JWT_SECRET)
-                const {_id,name,email,followers,following,pic}=savedUser
-                res.json({token,user:{_id,name,email,followers,following,pic}})
-                //res.json({message:"Successfully signed in"})
-            }
-            else{
-                return res.status(422).json({error:"Incorrect email or password"})
-            }
-        })
+})
+
+
+module.exports=router
    
-    .catch(err=>{
-         console.log(err)
-         })
-    })
-})

@@ -20,7 +20,7 @@ router.post('/signup',async(req,res)=>{
         const user=await User.create({email,password:hashedpassword,name,pic})
         await user.save()
         await signUpEmail(user)
-        res.json({message:"Saved successfully"})
+        return res.json({message:"Saved successfully"})
             
     }catch(err){
         return res.status(422).json({error:err.message})
@@ -34,7 +34,7 @@ router.post('/signin',async(req,res)=>{
             return res.status(422).json({error:'Please add all credentials'})
         const savedUser = await User.findByEmailAndPassword(email,password)
         const token = savedUser.generateToken()
-        res.json({message:"Successfully signed in",token})
+        return res.json({message:"Successfully signed in",token})
     }catch(err){
         return res.status(422).json({error:err.message})
     }     
@@ -51,7 +51,7 @@ router.post("/resetpassword",async(req,res)=>{
             user.expireToken = Date.now()+3600000
             await user.save()
             await resetPswdEmail(user,token)
-            res.json({message:"Check your email",token})
+            return res.json({message:"Check your email",token})
         }catch(err){
             return res.status(422).json({error:err.message})
         }
@@ -62,7 +62,7 @@ router.post("/newpassword",async(req,res)=>{
     try{
         const { newPassword, sentToken }=req.body
         await User.resetSession(sentToken, newPassword)
-        res.json({message:"Password Updated Succesfully"})
+        return res.json({message:"Password Updated Succesfully"})
     }catch(err){
         return res.status(422).json({error:err})
     }

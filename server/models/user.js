@@ -59,8 +59,7 @@ userSchema.statics.resetSession = async function (sentToken, newPassword){
     user.password=hashedpassword
     user.resetToken=undefined
     user.expireToken=undefined
-    user.save()
-    
+    user.save()    
 }
 
 userSchema.statics.findByEmail = async function (email){
@@ -70,7 +69,7 @@ userSchema.statics.findByEmail = async function (email){
     return user
 }
 
-<<<<<<< HEAD
+
 userSchema.statics.findByEmailAndPassword = async function (email,password){
     const user = await User.findOne({email})
     if(!user)
@@ -87,9 +86,8 @@ userSchema.statics.existingUser = async function (email){
     throw new Error("User already exists!")
     return false
 }
-=======
+
 mongoose.model("User",userSchema)
->>>>>>> 96e5405e1afecb560755c33adb5cb8155ed0bf48
 
 const User = mongoose.model('User', userSchema)
 module.exports = User

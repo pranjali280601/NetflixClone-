@@ -1,23 +1,23 @@
 const express = require("express")
-const mongoose=require('mongoose')
-const crypto=require('crypto')
-const bcrypt=require("bcryptjs")
-const { signUpEmail, resetPswdEmail }=require("../emailing")
+const mongoose = require('mongoose')
+const crypto = require('crypto')
+const bcrypt = require("bcryptjs")
+
+const { signUpEmail, resetPswdEmail } = require("../emailing")
+const { validateUser } = require("../validationSchemas/user") 
+  
 
 const User=mongoose.model("User")
 
 const router = express.Router()
 
-mongoose.set('useFindAndModify', false);
-
 router.post('/signup',async(req,res)=>{
     try{
-        const{name,email,password,pic}=req.body
-        if(!email || !name || !password)
-            return res.status(422).json({error:'Please add all credentials'})
+        const{name,email,password} = req.body
+        await validateUser(name, email, password)        
         await User.existingUser(email)
         const hashedpassword = await bcrypt.hash(password,12)
-        const user=await User.create({email,password:hashedpassword,name,pic})
+        const user=await User.create({email,password:hashedpassword,name})
         await user.save()
         await signUpEmail(user)
         return res.json({message:"Saved successfully"})
@@ -30,8 +30,7 @@ router.post('/signup',async(req,res)=>{
 router.post('/signin',async(req,res)=>{
     try{
         const{email,password}=req.body
-        if(!email || !password)
-            return res.status(422).json({error:'Please add all credentials'})
+        await validateUser(email, password)
         const savedUser = await User.findByEmailAndPassword(email,password)
         const token = savedUser.generateToken()
         return res.json({message:"Successfully signed in",token})
@@ -42,6 +41,7 @@ router.post('/signin',async(req,res)=>{
 
 router.post("/resetpassword",async(req,res)=>{
     const {email}=req.body
+    await validateUser(email)
     crypto.randomBytes(32,async (err,buffer)=>{
         try{
             if(err) console.log(err)
@@ -61,6 +61,7 @@ router.post("/resetpassword",async(req,res)=>{
 router.post("/newpassword",async(req,res)=>{
     try{
         const { newPassword, sentToken }=req.body
+        await validateUser(newPassword)
         await User.resetSession(sentToken, newPassword)
         return res.json({message:"Password Updated Succesfully"})
     }catch(err){

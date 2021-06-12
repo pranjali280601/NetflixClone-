@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const bcrypt=require("bcryptjs")
 const jwt=require("jsonwebtoken")
 
-const{JWT_SECRET}=require('../config/keys')
 const {ObjectId} = mongoose.Schema.Types
 
 const userSchema = new mongoose.Schema({
@@ -45,10 +44,9 @@ const userSchema = new mongoose.Schema({
     
 }
 )
-mongoose.set('useFindAndModify', false);
 
 userSchema.methods.generateToken = function(){
-    return jwt.sign({_id: this._id.toString()}, JWT_SECRET)
+    return jwt.sign({_id: this._id.toString()}, process.env.JWT_SECRET)
 }
 
 userSchema.statics.resetSession = async function (sentToken, newPassword){
@@ -86,8 +84,6 @@ userSchema.statics.existingUser = async function (email){
     throw new Error("User already exists!")
     return false
 }
-
-mongoose.model("User",userSchema)
 
 const User = mongoose.model('User', userSchema)
 module.exports = User

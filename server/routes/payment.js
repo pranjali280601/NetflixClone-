@@ -1,13 +1,15 @@
 require("dotenv").config();
 
 const express = require("express");
-const router = express.Router();
 const uniquId = require("uniqid");
 const crypto = require("crypto");
 const request = require("request");
 const Razorpay = require("razorpay");
 const mongoose = require('mongoose')
+
 const Subscription=mongoose.model("Subscription")
+
+const router = express.Router();
 
 let orderId;
 
@@ -19,16 +21,14 @@ var instance = new Razorpay({
 //creating the order (checking out)
 router.post("/createorder", async(req,res)=>{ 
   try{
-        // const { amount, currency } = req.body
-        // console.log(amount)
+        const { amount } = req.body
         var options = {
-        amount:70000,
+        amount,
         currency:"INR",
         receipt: uniquId(),
         } 
         const order = await instance.orders.create(options)
         orderId = order.id
-        console.log(order)
         res.json(order)
   } catch(err){
     return res.status(422).json({error:err.message})
@@ -39,7 +39,7 @@ router.post("/createorder", async(req,res)=>{
 router.post("/payment/callback", async(req,res)=>{
   try{
         const {razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
-        
+    
         const hash = crypto
           .createHmac("sha256", process.env.RZP_SECRET_KEY)
           .update(orderId + "|" + razorpay_payment_id)
@@ -61,7 +61,6 @@ router.post("/payment/callback", async(req,res)=>{
 })
  
 //verifying payment status
-//still under process
 router.get("/payments/:paymentId", async(req, res) => {  
   try{
       const data = await Subscription.findById(req.params.paymentId)

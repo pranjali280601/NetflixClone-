@@ -17,15 +17,18 @@ var instance = new Razorpay({
 })
 
 //creating the order (checking out)
-router.get("/createorder", async(req,res)=>{ 
+router.post("/createorder", async(req,res)=>{ 
   try{
+        // const { amount, currency } = req.body
+        // console.log(amount)
         var options = {
-        amount: 50000,
-        currency: "INR",
+        amount:70000,
+        currency:"INR",
         receipt: uniquId(),
         } 
         const order = await instance.orders.create(options)
         orderId = order.id
+        console.log(order)
         res.json(order)
   } catch(err){
     return res.status(422).json({error:err.message})
@@ -36,10 +39,12 @@ router.get("/createorder", async(req,res)=>{
 router.post("/payment/callback", async(req,res)=>{
   try{
         const {razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
+        
         const hash = crypto
           .createHmac("sha256", process.env.RZP_SECRET_KEY)
           .update(orderId + "|" + razorpay_payment_id)
           .digest("hex");
+          
         if (razorpay_signature === hash) {
           const order = await Subscription.create({
             _id: razorpay_payment_id,
@@ -59,11 +64,9 @@ router.post("/payment/callback", async(req,res)=>{
 //still under process
 router.get("/payments/:paymentId", async(req, res) => {  
   try{
-      console.log("Inside")
       const data = await Subscription.findById(req.params.paymentId)
       if (data == null) 
         return res.json({error: "No order Found"});
-      console.log(data)
       request(
         `https://${process.env.RZP_KEY_ID}:${process.env.RZP_SECRET_KEY}@api.razorpay.com/v1/payments/${req.params.paymentId}`,
         function (error, response, body) {

@@ -15,6 +15,7 @@ const PaymentStatus = ({ match }) => {
 
   const getPaymentStatus = (paymentId) => {
     grabStatus(paymentId).then((respsonse) => {
+      console.log(respsonse)
       if (respsonse.error) {
         setValues({ ...values, error: respsonse.error, amount: "" });
       } else {
@@ -25,7 +26,7 @@ const PaymentStatus = ({ match }) => {
 
   return (
     <div>
-      <div><h1>HELLO GUYS</h1></div>
+      
       {error && <h1 style={{ color: "red" }}>{error}</h1>}
       {amount > 0 && (
         <h1 style={{ color: "green" }}>

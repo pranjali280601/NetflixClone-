@@ -52,7 +52,6 @@ const App = () => {
     script.setAttribute("data-prefill.email", "abc@gmail.com");
     script.setAttribute("data-order_id", orderId);
     script.setAttribute("data-prefill.name", "Pranjali");
-    
     script.setAttribute("data-buttontext", "Hello");
     document.body.appendChild(form);
     form.appendChild(script);

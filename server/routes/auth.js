@@ -5,7 +5,6 @@ const bcrypt = require("bcryptjs")
 
 const { signUpEmail, resetPswdEmail } = require("../emailing")
 const { validateUser } = require("../validationSchemas/user") 
-  
 
 const User=mongoose.model("User")
 

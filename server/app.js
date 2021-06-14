@@ -7,8 +7,10 @@ const cors = require("cors");
 
 const mongoose = require('mongoose')
 require('./models/user')
+require('./models/subscription')
 
 const authRoute = require('./routes/auth')
+const paymentRoute = require('./routes/payment')
 
 const PORT = process.env.PORT || 7000
 
@@ -29,10 +31,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", authRoute)
+app.use("/",paymentRoute)
 
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT)
 })
-//env variables--done
-//use validation
-//payment gateway

@@ -12,7 +12,7 @@ const router = express.Router()
 
 router.post('/signup',async(req,res)=>{
     try{
-        const{name,email,password} = req.body
+        const{ name, email, password } = req.body
         await validateUser(name, email, password)        
         await User.existingUser(email)
         const hashedpassword = await bcrypt.hash(password,12)
@@ -28,7 +28,7 @@ router.post('/signup',async(req,res)=>{
  
 router.post('/signin',async(req,res)=>{
     try{
-        const{email,password}=req.body
+        const{ email, password }=req.body
         await validateUser(email, password)
         const savedUser = await User.findByEmailAndPassword(email,password)
         const token = savedUser.generateToken()

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { grabStatus } from "../apiCalls";
+
 
 const PaymentStatus = ({ match }) => {
   const [values, setValues] = useState({
@@ -14,15 +14,22 @@ const PaymentStatus = ({ match }) => {
   }, []);
 
   const getPaymentStatus = (paymentId) => {
-    grabStatus(paymentId).then((respsonse) => {
-      console.log(respsonse)
-      if (respsonse.error) {
-        setValues({ ...values, error: respsonse.error, amount: "" });
+    fetch(`/payments/${paymentId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+      console.log(data)
+      if (data.error) {
+        setValues({ ...values, error: data.error, amount: "" });
       } else {
-        setValues({ ...values, error: "", amount: respsonse.amount });
+        setValues({ ...values, error: "", amount: data.amount });
       }
-    });
-  };
+    })
+  }
 
   return (
     <div>

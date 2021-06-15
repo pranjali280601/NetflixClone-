@@ -23,7 +23,7 @@ router.post("/createorder", async(req,res)=>{
   try{
         const { amount } = req.body
         var options = {
-        amount,
+        amount: amount * 100,
         currency:"INR",
         receipt: uniquId(),
         } 
@@ -57,7 +57,7 @@ router.post("/payment/callback", async(req,res)=>{
         else res.send("ERROR")
       } catch(err){
           return res.status(422).json({error:err.message})
-        }
+      }
 })
  
 //verifying payment status

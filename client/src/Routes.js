@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import App from "./App";
-import PaymentStatus from "./comps/PaymentStatus";
+import PaymentStatus from "./components/PaymentStatus";
 const Routes = () => {
   return (
     <Router>

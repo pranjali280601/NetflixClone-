@@ -24,8 +24,7 @@ const userSchema = new mongoose.Schema({
         type: Date
     },
     friends:[{
-        type: ObjectId,
-        ref: "User"
+        type: String
     }],
     profilePic:{
         type: String,

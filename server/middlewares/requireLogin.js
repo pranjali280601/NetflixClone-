@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const jwt = require("jsonwebtoken")
 const mongoose = require('mongoose')
 
@@ -10,13 +12,13 @@ module.exports = async( req, res, next )=>{
         return res.status(401).json({error: "You must be logged in"})
 
         const token = authorization.replace("Bearer ","")// separating the token from the string
-        const payload = await jwt.verify(token,JWT_SECRET) // verifying that token belongs to the same user
+        const payload = await jwt.verify(token, process.env.JWT_SECRET) // verifying that token belongs to the same user
         const{ _id } = payload
         const userdata = await User.findById(_id)
         req.user = userdata
         next()
     }catch(error){
-     return res.status(401).json({error: "You must be logged i first"})
+     return res.status(401).json({error: "You must be logged in first"})
     }
     
 }

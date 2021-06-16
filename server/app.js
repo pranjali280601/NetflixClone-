@@ -11,6 +11,7 @@ require('./models/subscription')
 
 const authRoute = require('./routes/auth')
 const paymentRoute = require('./routes/payment')
+const profileRoute = require('./routes/profile')
 
 const PORT = process.env.PORT || 7000
 
@@ -31,7 +32,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", authRoute)
-app.use("/",paymentRoute)
+app.use("/", paymentRoute)
+app.use("/", profileRoute)
 
 app.listen(PORT,()=>{
     console.log("Server is running on port ",PORT)

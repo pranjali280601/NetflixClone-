@@ -24,6 +24,7 @@ const userSchema = new mongoose.Schema({
         type: Date
     },
     friends:[{
+        trim: true,
         type: String
     }],
     profilePic:{
@@ -43,6 +44,13 @@ const userSchema = new mongoose.Schema({
     
 }
 )
+
+userSchema.path('friends').validate(function (value) {
+    console.log(value.length)
+    if (value.length > 4) {
+      throw new Error("You can add a maximum of 3 users only!");
+    }
+  });
 
 userSchema.methods.generateToken = function(){
     return jwt.sign({_id: this._id.toString()}, process.env.JWT_SECRET)

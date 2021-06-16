@@ -4,7 +4,7 @@ const crypto = require('crypto')
 const bcrypt = require("bcryptjs")
 
 const { signUpEmail, resetPswdEmail } = require("../emailing")
-const { validateUser } = require("../validationSchemas/user") 
+const { validateSignUp, validateSignIn } = require("../validationSchemas/user") 
 
 const User=mongoose.model("User")
 
@@ -13,10 +13,10 @@ const router = express.Router()
 router.post('/signup',async(req,res)=>{
     try{
         const{ name, email, password } = req.body
-        await validateUser(name, email, password)        
+        await validateSignUp(name, email, password)        
         await User.existingUser(email)
         const hashedpassword = await bcrypt.hash(password,12)
-        const user=await User.create({email,password:hashedpassword,name})
+        const user=await User.create({email,password:hashedpassword,name,friends : [name]})
         await user.save()
         await signUpEmail(user)
         return res.json({message:"Saved successfully"})
@@ -28,11 +28,11 @@ router.post('/signup',async(req,res)=>{
  
 router.post('/signin',async(req,res)=>{
     try{
-        const{ email, password }=req.body
-        await validateUser(email, password)
+        const{ email, password } = req.body 
+        await validateSignIn(email, password)
         const savedUser = await User.findByEmailAndPassword(email,password)
         const token = savedUser.generateToken()
-        return res.json({message:"Successfully signed in",token})
+        return res.json({message:"Successfully signed in",token,savedUser})
     }catch(err){
         return res.status(422).json({error:err.message})
     }     

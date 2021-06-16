@@ -2,7 +2,10 @@ const Joi = require('joi')
 
 const validationSchema = Joi.object().keys({
   name : Joi.string(),
-  email : Joi.string().email().required(),
+  email : Joi.string().email().required().error(err=>{
+    err[0].message= 'Invalid email!' 
+    return err 
+   }),
 
   password : Joi.string().regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/).required()
   .error(err=>{
@@ -12,11 +15,17 @@ const validationSchema = Joi.object().keys({
   
 })
 
-const validateUser = ( name, email, password)=>{
-
+const validateSignUp = ( name, email, password)=>{
 const { error } = validationSchema.validate({ name, email, password })   
 if(error)
 throw new Error(error.message) 
-
 }
-module.exports = { validateUser }
+
+const validateSignIn = ( email, password)=>{
+
+  const { error } = validationSchema.validate({ email, password })   
+  if(error)
+  throw new Error(error.message) 
+  
+  }
+module.exports = { validateSignIn, validateSignUp }

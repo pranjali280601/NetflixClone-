@@ -1,92 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React,{useEffect,useState,createContext,useReducer,useContext} from 'react';
+import NavBar from './components/Navbar'
+import './App.css'
+import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom'
+import Home from "./components/screens/Home"
+import Payments from "./components/screens/payments"
+import {reducer,initialState } from './reducers/userReducer'
+import Signin from "./components/screens/Signin"
+import Signup from "./components/screens/Signup"
+import PaymentStatus from "./components/PaymentStatus"
 
+export const UserContext=createContext()
 
-const App = () => {
-  const [values, setValues] = useState({
-    orderId: "",
-    error: "",
-    success: false,
-  });
-  const [amount, setAmount] = useState("")
-  const { orderId } = values;
+const Routing=()=>{
 
-  const createOrder = async() => {
-    fetch('/createorder', {
-      method:"post",
-              headers:{
-                  "Content-Type":"application/json"
-              },
-              body:JSON.stringify({
-                amount
-              })
-    })
-    .then((res) => res.json())
-    .then((order)=>{
-    console.log(order)
-    if (order.error) {
-      setValues({ ...values, error: order.error, success: false });
-    } else {
-      setValues({
-        ...values,
-        error: "",
-        success: true,
-        orderId: order.id
-      });
+  const history=useHistory()
+  const {state,dispatch}=useContext(UserContext)
+
+  useEffect(()=>{
+    const user=JSON.parse(localStorage.getItem("user"))
+    
+    if(user){
+      dispatch({type:"USER",payload:user})
+      
     }
-    }).catch(err=>{
-      console.log(err)
-      console.log(amount,orderId)
-  })
-  
-  }
-  useEffect(() => {
-    console.log("helooo")
-    if (amount > 0 && orderId != "") {
-      console.log(2)
-      showRazoryPay();
+    else{
+      if(!history.location.pathname.startsWith('/reset'))
+      history.push("/signin")
+      
     }
-  }, [orderId]);
+    
 
-  const showRazoryPay = () => {
-    const form = document.createElement("form");
-    form.setAttribute("action",'http://localhost:7000/payment/callback');
-    form.setAttribute("method", "POST");
+  },[])
 
-    const script = document.createElement("script");
+  return (
+      <Switch>
+      <Route exact path="/signin">
+      <Signin />
+      </Route>
+      <Route exact path="/signup">
+      <Signup />
+      </Route>
+      <div>
+        <NavBar/>
+        <Route exact path="/">
+        <Home />
+        </Route>
+        <Route exact path="/Home">
+        <Home />
+        </Route>
+      </div>
+     
+      </Switch>
 
-    script.src = "https://checkout.razorpay.com/v1/checkout.js";
-    script.setAttribute("data-key", "rzp_test_CW1SdqYEmx8oKq");
-    script.setAttribute("data-amount", amount);
-    script.setAttribute("data-name", "Netflix");
-    script.setAttribute("data-prefill.contact", "9315635212");
-    script.setAttribute("data-prefill.email", "abc@gmail.com");
-    script.setAttribute("data-order_id", orderId);
-    script.setAttribute("data-prefill.name", "Pranjali");
-    script.setAttribute("data-buttontext", "CHECKOUT");
-    document.body.appendChild(form);
-    form.appendChild(script);
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.custom = "Hidden Element";
-    input.name = "hidden";
-    form.appendChild(input);
-  };
-  return (<div>
-    <div>
-    <input style={{color:"black"}}
-      type="text"
-      placeholder="Amount"
-      value={amount}
-      onChange={(e)=>setAmount(e.target.value)}
-      />
-      <button className="btn waves-effect waves-#000000 black"
-                style={{borderRadius:"20px"}}
-                onClick={()=>createOrder()}>
-                    SUBMIT
-                </button>
-    </div>
-    <div>{amount === 0 && orderId == "" && <h1>Loading...</h1>}</div>
-    </div>)
-};
+  )
+}
+
+
+
+function App() {
+  const [state,dispatch]= useReducer(reducer, initialState)
+  return (
+    <UserContext.Provider value={{state,dispatch}}>
+    <BrowserRouter>
+    <Routing/>
+    </BrowserRouter>
+    </UserContext.Provider>
+ 
+  );
+}
+
+
 
 export default App;

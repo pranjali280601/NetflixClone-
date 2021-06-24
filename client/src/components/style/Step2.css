@@ -1,0 +1,61 @@
+.step2-body{
+    position: absolute;
+    top: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    z-index: 1;
+    padding: 20px; 
+    color: white;
+    left: 0;
+    right: 0;
+}
+.step2-body h1{
+    color: black;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: -10px;
+}
+.step2-body h2{
+    color: black;
+    font-size: 1rem;
+    font-weight: 400;
+
+}
+.step2-body h3{
+    color: black;
+    font-size: 1.1rem;
+    margin-top: -10px;
+}
+
+ .step2-mycard{
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border:none !important;
+}
+.step2-auth-card{
+    border:none !important;
+    padding-top: 0;
+    padding-left: 55px;
+    padding-right: 55px;
+    text-align: center;
+    max-width: 480px;
+    margin: auto;
+}
+.step2-icon-card{
+    text-align: left;
+    padding-left: 30px;
+} 
+.step2-btn-style{
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #e50914 ;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    height: 50px;
+    width: 103% ;
+    font-weight: 600;
+
+}

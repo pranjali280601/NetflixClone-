@@ -40,9 +40,7 @@ const Payments = () => {
   
   }
   useEffect(() => {
-    console.log("helooo")
     if (amount > 0 && orderId != "") {
-      console.log(2)
       showRazoryPay();
     }
   }, [orderId]);
@@ -58,8 +56,8 @@ const Payments = () => {
     script.setAttribute("data-key", "rzp_test_CW1SdqYEmx8oKq");
     script.setAttribute("data-amount", amount);
     script.setAttribute("data-name", "Netflix");
-    script.setAttribute("data-prefill.contact", "9315635212");
-    script.setAttribute("data-prefill.email", "abc@gmail.com");
+    // script.setAttribute("data-prefill.contact", "Mobile");
+    // script.setAttribute("data-prefill.email", "abc@gmail.com");
     script.setAttribute("data-order_id", orderId);
     script.setAttribute("data-prefill.name", "Pranjali");
     script.setAttribute("data-buttontext", "CHECKOUT");

@@ -1,20 +1,24 @@
-import React,{useEffect,useState,createContext,useReducer,useContext} from 'react';
+import React,{useEffect,createContext,useReducer,useContext} from 'react';
 import NavBar from './components/Navbar'
 import './App.css'
 import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom'
 import Home from "./components/screens/Home"
 import Payments from "./components/screens/payments"
-import {reducer,initialState } from './reducers/userReducer'
+import {reducer,initialState } from './reducers/userReducer.js'
 import Signin from "./components/screens/Signin"
 import Signup from "./components/screens/Signup"
 import PaymentStatus from "./components/PaymentStatus"
+import Step1 from "./components/screens/Step1"
+import Step11 from "./components/screens/Step11"
+import Step2 from "./components/screens/Step2"
+import Step3 from "./components/screens/Step3"
+import Pricing from "./components/screens/Pricing"
 
 export const UserContext=createContext()
 
 const Routing=()=>{
-
   const history=useHistory()
-  const {state,dispatch}=useContext(UserContext)
+  const {dispatch}=useContext(UserContext)
 
   useEffect(()=>{
     const user=JSON.parse(localStorage.getItem("user"))
@@ -23,13 +27,11 @@ const Routing=()=>{
       dispatch({type:"USER",payload:user})
       
     }
-    else{
-      if(!history.location.pathname.startsWith('/reset'))
-      history.push("/signin")
+    // else{
+    //   if(!history.location.pathname.startsWith('/reset'))
+    //   history.push("/step1")
       
-    }
-    
-
+    // }
   },[])
 
   return (
@@ -40,15 +42,34 @@ const Routing=()=>{
       <Route exact path="/signup">
       <Signup />
       </Route>
-      <div>
-        <NavBar/>
-        <Route exact path="/">
-        <Home />
-        </Route>
+      <Route exact path="/">
+        <Step1 />
+      </Route>
+      <Route exact path="/step1">
+        <Step1 />
+      </Route>
+      <Route exact path="/step11">
+        <Step11 />
+      </Route>
+      <Route exact path="/step2">
+        <Step2 />
+      </Route>
+      <Route exact path="/step3/:amount">
+        <Step3 />
+      </Route>
+      <Route exact path="/pricing">
+        <Pricing />
+      </Route>
         <Route exact path="/Home">
         <Home />
         </Route>
-      </div>
+        <Route exact path="/payments">
+        <Payments />
+        </Route>
+        <Route exact path="/payments/status">
+        <PaymentStatus />
+        </Route>
+      
      
       </Switch>
 

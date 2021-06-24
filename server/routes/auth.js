@@ -4,11 +4,25 @@ const crypto = require('crypto')
 const bcrypt = require("bcryptjs")
 
 const { signUpEmail, resetPswdEmail } = require("../emailing")
-const { validateSignUp, validateSignIn } = require("../validationSchemas/user") 
+const { validateSignUp, validateSignIn, validateSignUpemail } = require("../validationSchemas/user") 
 
 const User=mongoose.model("User")
 
 const router = express.Router()
+
+// router.post('/signupemail',async(req,res)=>{
+//     try{
+//         const{ email } = req.body
+//         await validateSignUpemail( email )      
+//         await User.existingUser(email)
+//         const user=await User.create({email})
+//         await user.save()
+//         await signUpEmail(user)
+//         return res.json({message:"Saved successfully"})
+//     }catch(err){
+//         return res.status(422).json({error:err.message})
+//     }
+// })
 
 router.post('/signup',async(req,res)=>{
     try{
@@ -18,7 +32,6 @@ router.post('/signup',async(req,res)=>{
         const hashedpassword = await bcrypt.hash(password,12)
         const user=await User.create({email,password:hashedpassword,name,friends : [name]})
         await user.save()
-        await signUpEmail(user)
         return res.json({message:"Saved successfully"})
             
     }catch(err){

@@ -19,9 +19,9 @@ var instance = new Razorpay({
 })
 
 //creating the order (checking out)
-router.post("/createorder", async(req,res)=>{ 
+router.get("/createorder/:amount", async(req,res)=>{ 
   try{
-        const { amount } = req.body
+        const { amount } = req.params
         var options = {
         amount: amount * 100,
         currency:"INR",

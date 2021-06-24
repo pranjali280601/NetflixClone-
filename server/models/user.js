@@ -6,16 +6,14 @@ const {ObjectId} = mongoose.Schema.Types
 
 const userSchema = new mongoose.Schema({
     name:{
-        type: String,
-        required: true
+        type: String
     },
     email:{
         type: String,
         required: true
     },
     password:{
-        type: String,
-        required: true
+        type: String
     },
     phoneNumber:{
         type: Number
@@ -86,6 +84,7 @@ userSchema.statics.findByEmailAndPassword = async function (email,password){
 }
 
 userSchema.statics.existingUser = async function (email){
+
     const user = await User.findOne({email})
     if(user)
     throw new Error("User already exists!")
@@ -94,3 +93,4 @@ userSchema.statics.existingUser = async function (email){
 
 const User = mongoose.model('User', userSchema)
 module.exports = User
+

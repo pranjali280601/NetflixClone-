@@ -3,11 +3,11 @@ const Joi = require('joi')
 const validationSchema = Joi.object().keys({
   name : Joi.string(),
   email : Joi.string().email().required().error(err=>{
-    err[0].message= 'Invalid email!' 
+    err[0].message= 'Invalid email!!' 
     return err 
    }),
 
-  password : Joi.string().regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/).required()
+  password : Joi.string().regex(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/)
   .error(err=>{
      err[0].message= 'must be between 6-16 characters, have at least one capital letter, one lowercase letter, one digit, and one special character' 
      return err 
@@ -28,4 +28,9 @@ const validateSignIn = ( email, password)=>{
   throw new Error(error.message) 
   
   }
-module.exports = { validateSignIn, validateSignUp }
+const validateSignUpemail = (email) =>{
+  const { error } = validationSchema.validate({ email})   
+  if(error)
+  throw new Error(error.message) 
+}
+module.exports = { validateSignIn, validateSignUp, validateSignUpemail }

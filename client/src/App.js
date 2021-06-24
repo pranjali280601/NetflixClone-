@@ -35,7 +35,9 @@ const Routing=()=>{
   },[])
 
   return (
+    
       <Switch>
+        <div className = "app">
       <Route exact path="/signin">
       <Signin />
       </Route>
@@ -70,7 +72,7 @@ const Routing=()=>{
         <PaymentStatus />
         </Route>
       
-     
+        </div>
       </Switch>
 
   )

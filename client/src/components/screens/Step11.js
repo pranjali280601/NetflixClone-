@@ -59,7 +59,7 @@ const Step11 = () =>{
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 />
-                <button className="btn-style"
+                <button className="btn-style #f44336 red"
                 onClick={()=>PostData()}>
                     Continue
                 </button>

@@ -21,19 +21,19 @@ const NavBar=()=>{
 
 
     return (
-        <div className= {`nav ${show && "nav-black"}`}>
-            <div className="nav-contents">
-                <img className="nav-logo" src={logo} alt="" />
-                <div className = "nav-tabs">
+        <div className= {`home-nav ${show && "home-nav-black"}`}>
+            <div className="home-nav-contents">
+                <img className="home-nav-logo" src={logo} alt="" />
+                <div className = "home-nav-tabs">
                     <ul>   
-                        <li key="2" ><a href="/" className="nav-tab">Home</a></li>,
-                        <li key="3"><a href="/" className="nav-tab" >TV shows</a></li>,
-                        <li key="4"><a href="/" className="nav-tab" >Movies</a></li>,
-                        <li key="5"><a href="/" className="nav-tab" >New and Popular</a></li>,
-                        <li key="6"><a href="/" className="nav-tab" >My List</a></li>,
+                        <li key="2" ><a href="/" className="home-nav-tab">Home</a></li>
+                        <li key="3"><a href="/" className="home-nav-tab" >TV shows</a></li>
+                        <li key="4"><a href="/" className="home-nav-tab" >Movies</a></li>
+                        <li key="5"><a href="/" className="home-nav-tab" >New and Popular</a></li>
+                        <li key="6"><a href="/" className="home-nav-tab" >My List</a></li>
                     </ul>
                 </div>
-                <img className="nav-profile-icon" src={profileIcon1}/>
+                <img className="home-nav-profile-icon" src={profileIcon1}/>
             </div>
         </div>
     )

@@ -22,7 +22,7 @@ const Step1 = () =>{
                 <h2>STEP 1 OF 3</h2>
                 <h1>Finish setting up your account</h1>
                 <h3>Netflix is personalised for you. Create a password to watch on any device at any time.</h3>
-                <button className="btn-style"
+                <button className="btn-style #f44336 red"
                  onClick={()=>{history.push('/step11')}}>
                     Continue    
                 </button>

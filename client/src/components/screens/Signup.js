@@ -34,7 +34,7 @@ const Signup = () =>{
                     <form>
                         <input type = "email" placeholder = " Email address"  value={email}
                         onChange={(e)=>setEmail(e.target.value)} />
-                        <button className = "btn-get-started" onClick={()=>validateData()} >
+                        <button className = "btn-get-started #f44336 red" onClick={()=>validateData()} >
                         Get Started   
                         </button>
                     </form>

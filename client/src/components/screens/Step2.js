@@ -21,7 +21,7 @@ const Step2 = () =>{
                 <h3 className = "step2-icon-card"><i class="small material-icons" style={{color:"red"}}>done</i> No commitments, cancel anytime.</h3>
                 <h3 className = "step2-icon-card"><i class="small material-icons" style={{color:"red"}}>done</i> Everything on Netflix for one low price.</h3>
                 <h3 className = "step2-icon-card"><i class="small material-icons" style={{color:"red"}}>done</i> No ads and no extra fees. Ever.</h3>
-                <button className="step2-btn-style"
+                <button className="step2-btn-style #f44336 red"
                  onClick={()=>{history.push('/pricing')}}>
                     See the Plans   
                 </button>

@@ -1,24 +1,48 @@
 import React, { useEffect, useState } from 'react';
 import './Banner.css'
+import axios from "./axios";
+import requests from "./request"
 
 
 const Banner=()=>{
 
+    const [movie, setMovie] = useState([])
+
+    useEffect(() => {
+        async function fetchData(){
+            const request = await axios.get(requests.fetchNetflixOriginals)
+            setMovie(
+                request.data.results[
+                    Math.floor(Math.random() * request.data.results.length -1)
+                ]
+            )
+            return request
+        }
+        fetchData()
+    }, [])
+
+    const truncate = (string, n) =>{
+        return (string?.length > n ? string.substr(0,n-1)+"..." : string)
+    }
+
     return (
-        <header className = "banner" style = {{
+        <header className = "home-banner" style = {{
             backgroundSize: "cover",
-            backgroundImage: `url("https://i.pinimg.com/originals/ea/ba/51/eaba518f0dfd20c93d193a6b8bc19422.png")`,
+            backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
             backgroundPosition: "center center"
         }}>
-            <div className = "banner-contents">
-                <h1 className = "banner-title">Movie Name</h1>
-                <div className = "banner-btns">
-                    <button className = "banner-btn">Play</button>
-                    <button className = "banner-btn">My List</button>
+            <div className = "home-banner-contents">
+                <h1 className = "home-banner-title">
+                    {movie?.title || movie?.name || movie?.original_name}
+                </h1>
+                <div className = "home-banner-btns">
+                    <button className = "home-banner-btn">Play</button>
+                    <button className = "home-banner-btn">More info</button>
                 </div>
-                <h1 className = "banner-des">Description</h1>
+                <h1 className = "home-banner-des">
+                    {truncate(movie?.overview,100)}</h1>
             </div>
-            <div className = "banner-fade-btn" />
+            <div className = "home-banner-fade-bottom" />
 
         </header>
     )

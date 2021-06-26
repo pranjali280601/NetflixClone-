@@ -1,9 +1,7 @@
 import React,{useEffect,createContext,useReducer,useContext} from 'react';
-import NavBar from './components/Navbar'
 import './App.css'
 import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom'
 import Home from "./components/screens/Home"
-import Payments from "./components/screens/payments"
 import {reducer,initialState } from './reducers/userReducer.js'
 import Signin from "./components/screens/Signin"
 import Signup from "./components/screens/Signup"
@@ -68,9 +66,6 @@ const Routing=()=>{
         </Route>
         <Route exact path="/profiles">
         <Profiles />
-        </Route>
-        <Route exact path="/payments">
-        <Payments />
         </Route>
         <Route exact path="/payments/status">
         <PaymentStatus />

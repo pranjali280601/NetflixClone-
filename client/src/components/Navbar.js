@@ -61,7 +61,18 @@ const NavBar=()=>{
                 <input type="text" placeholder="" value={query}
 	            onChange={(e) => searchMovies(setQuery(e.target.value))} /> 
                 </div>
-                <img className="home-nav-profile-icon" src={profileIcon1}/>
+                <a class='dropdown-trigger ' href='#' 
+                    data-target='dropdown1' ref={dropdownTrigger}>
+                        <img className="home-nav-profile-icon" src={profileIcon1}/></a>
+                        <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="/home" style={{color:"white"}}>Home</a></li>
+                        <li><a href="/home" style={{color:"white"}}>TV shows</a></li>
+                        
+                        <li><a href="/home" style={{color:"white"}}>Movies</a></li>
+                        <li><a href="/home" style={{color:"white"}}>New and Popular</a></li>
+                        <li><a href="/home"style={{color:"white"}}>My List</a></li>
+                        </ul>
+                
             </div>
         </div>
         

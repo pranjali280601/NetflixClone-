@@ -1,9 +1,9 @@
 import React from "react"
-import { useHistory } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import logo from "../../images/logo.png"
 import "../style/Step1.css"
 
-const Step1 = () =>{
+const SubscribePlan = () =>{
     const history = useHistory()
 
     return (
@@ -15,16 +15,12 @@ const Step1 = () =>{
             <div className = "step1-body">
             <div className='step1-mycard'>
             <div className='step1-auth-card' >
-                <i class="medium material-icons" style={{color:"red"}}>laptop</i>
-                <i class="medium material-icons" style={{color:"red"}}> desktop_windows</i>
-                <i class="medium material-icons" style={{color:"red"}}> tablet_android</i>
-                <i class="small material-icons" style={{color:"red"}}> phone_android</i>
-                <h2>STEP 1 OF 3</h2>
+                <h2>Oops! You're still not a member of Netflix!</h2>
                 <h1>Finish setting up your account</h1>
-                <h3>Netflix is personalised for you. Create a password to watch on any device at any time.</h3>
+                <h3>Subscribe to a plan now and enjoy your membership!</h3>
                 <button className="btn-style #f44336 red"
-                 onClick={()=>{history.push('/step11')}}>
-                    Continue    
+                 onClick={()=>{history.push('/pricing')}}>
+                    See the plans    
                 </button>
                </div>
                </div>
@@ -38,4 +34,4 @@ const Step1 = () =>{
 
 }
 
-export default Step1
+export default SubscribePlan

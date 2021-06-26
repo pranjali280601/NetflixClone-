@@ -1,8 +1,13 @@
-import React,{useEffect,createContext,useReducer,useContext} from 'react';
-import './App.css'
-import {BrowserRouter,Route,Switch,useHistory} from 'react-router-dom'
+import React,{ useEffect } from 'react';
+
+import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
+import { Provider } from "react-redux"
+import { useDispatch } from "react-redux"
+
+import { userAction } from './Redux/Reducer/user/user.action';
+import store from "./Redux/store"
+
 import Home from "./components/screens/Home"
-import {reducer,initialState } from './reducers/userReducer.js'
 import Signin from "./components/screens/Signin"
 import Signup from "./components/screens/Signup"
 import PaymentStatus from "./components/PaymentStatus"
@@ -12,18 +17,22 @@ import Step2 from "./components/screens/Step2"
 import Step3 from "./components/screens/Step3"
 import Pricing from "./components/screens/Pricing"
 import Profiles from "./components/screens/Profiles"
+import SubscribePlan from './components/screens/SubscribePlan';
 
-export const UserContext=createContext()
+import './App.css'
+
+
 
 const Routing=()=>{
-  const history=useHistory()
-  const {dispatch}=useContext(UserContext)
+  const history = useHistory()
+  const dispatch = useDispatch()
+
 
   useEffect(()=>{
     const user=JSON.parse(localStorage.getItem("user"))
     
     if(user){
-      dispatch({type:"USER",payload:user})
+      dispatch(userAction(user))
       
     }
     // else{
@@ -36,9 +45,11 @@ const Routing=()=>{
   return (
     
       <Switch>
-        
       <Route exact path="/signin">
       <Signin />
+      </Route>
+      <Route exact path="/subscribePlan">
+      <SubscribePlan />
       </Route>
       <Route exact path="/signup">
       <Signup />
@@ -67,7 +78,7 @@ const Routing=()=>{
         <Route exact path="/profiles">
         <Profiles />
         </Route>
-        <Route exact path="/payments/status">
+        <Route exact path="/payment/status/:paymentId">
         <PaymentStatus />
         </Route>
       
@@ -80,13 +91,13 @@ const Routing=()=>{
 
 
 function App() {
-  const [state,dispatch]= useReducer(reducer, initialState)
+ 
   return (
-    <UserContext.Provider value={{state,dispatch}}>
+    <Provider store = {store}>
     <BrowserRouter>
     <Routing/>
     </BrowserRouter>
-    </UserContext.Provider>
+    </Provider>
  
   );
 }

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import {useHistory, useLocation} from 'react-router-dom'
-import logo from "../../images/logo.png"
 import "../style/Step3.css"
 
 
 const Step3 = () =>{
-    // console.log(match)
+    
     const location = useLocation()
 
     const [values, setValues] = useState({
@@ -72,10 +71,10 @@ const Step3 = () =>{
       };
 
     return (
-        <div className= "nav">
-            <div className="nav-contents">
-            <img className = "nav-logo" src = {logo} alt = "" />    
-            <a href="/signup" className= "nav-tab">Sign Out</a>
+        // <div className= "nav">
+        //     <div className="nav-contents">
+        //     <img className = "nav-logo" src = {logo} alt = "" />    
+        //     <a href="/signup" className= "nav-tab">Sign Out</a>
             <div className = "step2-body">
             <div className='step2-mycard'>
             <div className='step3-auth-card' >
@@ -101,8 +100,8 @@ const Step3 = () =>{
                     
                
                 
-            </div>
-        </div>
+        //     </div>
+        // </div>
     )
 
 }

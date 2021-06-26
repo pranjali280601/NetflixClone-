@@ -14,22 +14,11 @@ const orderSchema = new mongoose.Schema({
     user_id :{
         type: ObjectId,
         ref: "User"
-
     },
-    expiry: Date,
+    expiry: {
+      type: Date,
+      default: +new Date() + 30*24*60*60*1000
+    }
   });
-
-orderSchema.methods.generateToken = function(){
-    return jwt.sign({_id: this._id.toString()}, process.env.JWT_SECRET)
-}
-
-orderSchema.statics.resetSession = async function (sentToken, newPassword){
-    const user = await Subscription.findOne({resetToken:sentToken,expireToken:{$gt:Date.now()}})
-    if(!user)
-    throw new Error("Session Expired. Please try again.")
-    user.resetToken=undefined
-    user.expireToken=undefined
-    user.save()    
-}
 
 mongoose.model("Subscription",orderSchema)

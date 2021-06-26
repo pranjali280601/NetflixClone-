@@ -1,15 +1,17 @@
-import React,{useState,useContext} from 'react';
-import {Link,useHistory} from 'react-router-dom'
-import { UserContext } from '../../App'
+import React,{ useState } from 'react';
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from "react-redux"
+import { userAction } from "../../Redux/Reducer/user/user.action"
+// import { UserContext } from '../../App'
 import logo from "../../images/logo.png"
 import M from 'materialize-css'
 import "../style/Signin.css"
 
 const SignIn=()=>{
-    const {state,dispatch}=useContext(UserContext)
-    const history=useHistory()
-    const[password,setPassword]=useState("")
-    const[email,setEmail]=useState("")
+    const dispatch = useDispatch()
+    const history = useHistory()
+    const[password,setPassword] = useState("")
+    const[email,setEmail] = useState("")
    
     const PostData=()=>{
         fetch("/signin",{
@@ -30,7 +32,7 @@ const SignIn=()=>{
                 else{
                     localStorage.setItem("jwt",data.token)
                     localStorage.setItem("user",JSON.stringify(data.user))
-                    dispatch({type:"USER",payload:data.user})
+                    dispatch(userAction(data.user))
                     history.push('/home')
                 }
             }).catch(err=>{

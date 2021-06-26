@@ -1,10 +1,11 @@
-import React, {useState} from "react"
-import {useHistory} from 'react-router-dom'
+import React, { useState } from "react"
+import { useHistory } from 'react-router-dom'
 import M from "materialize-css"
 import logo from "../../images/logo.png"
 import "../style/Step11.css"
 
 const Step11 = () =>{
+
     const history=useHistory()
     
     const[password, setPassword] = useState("")

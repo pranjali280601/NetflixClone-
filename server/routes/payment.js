@@ -5,7 +5,8 @@ const uniquId = require("uniqid");
 const crypto = require("crypto");
 const request = require("request");
 const Razorpay = require("razorpay");
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const { truncate } = require("fs");
 
 const Subscription=mongoose.model("Subscription")
 
@@ -64,16 +65,16 @@ router.post("/payment/callback", async(req,res)=>{
 //verifying payment status
 router.get("/payments/:paymentId", async(req, res) => {  
   try{
+     
       const data = await Subscription.findById(req.params.paymentId)
+      console.log(data)
       if (data == null) 
         return res.json({error: "No order Found"});
       request(
         `https://${process.env.RZP_KEY_ID}:${process.env.RZP_SECRET_KEY}@api.razorpay.com/v1/payments/${req.params.paymentId}`,
         async function (error, response, body) {
           if (body) {
-            const result = JSON.parse(body);
-            const savedUser = await Subscription.findOne({user_id:req.user})
-            savedUser.expiry = Date.now + 2592000
+            const result = JSON.parse(body)
             res.status(200).json(result);
           }
           if(error)

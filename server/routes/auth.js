@@ -6,7 +6,8 @@ const bcrypt = require("bcryptjs")
 const { signUpEmail, resetPswdEmail } = require("../emailing")
 const { validateSignUp, validateSignIn, validateSignUpemail } = require("../validationSchemas/user") 
 
-const User=mongoose.model("User")
+const User = mongoose.model("User")
+const Subscription = mongoose.model("Subscription")
 
 const router = express.Router()
 
@@ -16,7 +17,8 @@ router.post('/signup',async(req,res)=>{
         await validateSignUp(name, email, password)        
         await User.existingUser(email)
         const hashedpassword = await bcrypt.hash(password,12)
-        const user=await User.create({email,password:hashedpassword,name,friends : [name]})
+        const user = await User.create({email,password:hashedpassword,name,friends : [name]})
+        await signUpEmail(user)
         await user.save()
         return res.json({message:"Saved successfully"})
             
@@ -31,8 +33,9 @@ router.post('/signin',async(req,res)=>{
         await validateSignIn(email, password)
         const savedUser = await User.findByEmailAndPassword(email,password)
         const validSubs = await Subscription.findOne({user_id:savedUser._id})
-        if(!validSubs)
-        return res.status(422).json({message: "Please subscribe to a plan first!" })
+        console.log(validSubs)
+        if(validSubs == null || validSubs.expiry >= Date.now())
+        return res.status(422).json({error: "Please subscribe to a plan first!" })
         const token = savedUser.generateToken()
         return res.json({message:"Successfully signed in",token,savedUser})
     }catch(err){

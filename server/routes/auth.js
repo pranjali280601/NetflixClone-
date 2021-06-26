@@ -10,20 +10,6 @@ const User=mongoose.model("User")
 
 const router = express.Router()
 
-// router.post('/signupemail',async(req,res)=>{
-//     try{
-//         const{ email } = req.body
-//         await validateSignUpemail( email )      
-//         await User.existingUser(email)
-//         const user=await User.create({email})
-//         await user.save()
-//         await signUpEmail(user)
-//         return res.json({message:"Saved successfully"})
-//     }catch(err){
-//         return res.status(422).json({error:err.message})
-//     }
-// })
-
 router.post('/signup',async(req,res)=>{
     try{
         const{ name, email, password } = req.body
@@ -44,6 +30,9 @@ router.post('/signin',async(req,res)=>{
         const{ email, password } = req.body 
         await validateSignIn(email, password)
         const savedUser = await User.findByEmailAndPassword(email,password)
+        const validSubs = await Subscription.findOne({user_id:savedUser._id})
+        if(!validSubs)
+        return res.status(422).json({message: "Please subscribe to a plan first!" })
         const token = savedUser.generateToken()
         return res.json({message:"Successfully signed in",token,savedUser})
     }catch(err){

@@ -19,7 +19,7 @@ const Pricing = () =>{
                 <div className= "nav nav-black">
                     <div className="nav-contents">
                         <img className = "nav-logo" src = {logo} alt = "" />    
-                        <a href="/signin" className= "nav-tab">Sign In</a>
+                        <a href="/signin" className= "nav-tab">Sign Out</a>
                     </div>
                 </div>
                 <div className = "setup ">
@@ -34,21 +34,21 @@ const Pricing = () =>{
                     <thead>
                         <tr>
                             <th></th>
-                            <th><button class=" waves-effect waves-light pricing-btn-style" 
+                            <th><button class=" waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(199)}>
                             Mobile
                             </button></th>
                             <th>
-                            <button class="waves-effect waves-light pricing-btn-style" 
+                            <button class="waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(499)}>
                             Basic
                             </button>
                             </th>
-                            <th><button class=" waves-effect waves-light pricing-btn-style" 
+                            <th><button class=" waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(649)}>
                             Standard
                             </button></th>
-                            <th><button class="pricing-btn-style waves-effect waves-light" 
+                            <th><button class="waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(799)}>
                             Premium
                             </button>
@@ -105,6 +105,7 @@ const Pricing = () =>{
                 </tr>
                 
                 </table>
+                <h2>Plan selected : Rs {amount}</h2>
                 <h2>HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to your internet service and device capabilities.
                      Not all content is available in all resolutions. See our Terms of Use for more details.</h2>
                 <h2>

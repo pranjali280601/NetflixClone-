@@ -3,16 +3,17 @@ import Navbar from '../Navbar'
 import Banner from '../Banner'   
 import requests from '../request';
 import Row from '../Row'
+import '../style/Home.css'
 
 const Home=()=>{
     return (
-        <div >
+        <div className = "home">
            <Navbar />
            <Banner />
            <Row 
            title = "NETFLIX ORIGINALS"
            fetchURL = { requests.fetchNetflixOriginals }
-           isLargeRow
+           isLargeRow = "true"
            />
            <Row 
            title = "Trending Now"

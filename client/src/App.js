@@ -13,6 +13,7 @@ import Step11 from "./components/screens/Step11"
 import Step2 from "./components/screens/Step2"
 import Step3 from "./components/screens/Step3"
 import Pricing from "./components/screens/Pricing"
+import Profiles from "./components/screens/Profiles"
 
 export const UserContext=createContext()
 
@@ -37,7 +38,7 @@ const Routing=()=>{
   return (
     
       <Switch>
-        <div className = "app">
+        
       <Route exact path="/signin">
       <Signin />
       </Route>
@@ -65,6 +66,9 @@ const Routing=()=>{
         <Route exact path="/Home">
         <Home />
         </Route>
+        <Route exact path="/profiles">
+        <Profiles />
+        </Route>
         <Route exact path="/payments">
         <Payments />
         </Route>
@@ -72,7 +76,7 @@ const Routing=()=>{
         <PaymentStatus />
         </Route>
       
-        </div>
+      
       </Switch>
 
   )

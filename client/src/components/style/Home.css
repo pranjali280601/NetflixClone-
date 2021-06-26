@@ -1,0 +1,10 @@
+
+.home{
+  background-color: #111;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+overflow-y: hidden;
+margin: auto;
+max-width: 100%;
+}

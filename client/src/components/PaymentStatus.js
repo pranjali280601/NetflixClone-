@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router";
 
 
 const PaymentStatus = ({ match }) => {
+
+  const history = useHistory()
   const [values, setValues] = useState({
     amount: "",
     error: "",
@@ -27,6 +30,7 @@ const PaymentStatus = ({ match }) => {
         setValues({ ...values, error: data.error, amount: "" });
       } else {
         setValues({ ...values, error: "", amount: data.amount });
+        history.push("/signin")
       }
     })
   }
@@ -34,13 +38,10 @@ const PaymentStatus = ({ match }) => {
   return (
     <div>
       
-      {error && <h1 style={{ color: "red" }}>{error}</h1>}
-      {amount > 0 && (
-        <h1 style={{ color: "green" }}>
-          Your order of rs {amount / 100} is successfull
-        </h1>
-      )}
-      {!error && !amount && <h1>Loading...</h1>}
+      {error && <h1 style={{ color: "red" }}>Oops! Payment Unsuccessful!!</h1> &&
+      <h1>{error}</h1>
+      }
+      {!error && <h1>Loading...</h1>}
     </div>
   );
 };

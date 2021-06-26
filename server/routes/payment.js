@@ -49,6 +49,7 @@ router.post("/payment/callback", async(req,res)=>{
           const order = await Subscription.create({
             _id: razorpay_payment_id,
             orders: razorpay_order_id,
+            user_id: req.user
           })
           await order.save()
           console.log("Verified")
@@ -68,9 +69,11 @@ router.get("/payments/:paymentId", async(req, res) => {
         return res.json({error: "No order Found"});
       request(
         `https://${process.env.RZP_KEY_ID}:${process.env.RZP_SECRET_KEY}@api.razorpay.com/v1/payments/${req.params.paymentId}`,
-        function (error, response, body) {
+        async function (error, response, body) {
           if (body) {
             const result = JSON.parse(body);
+            const savedUser = await Subscription.findOne({user_id:req.user})
+            savedUser.expiry = Date.now + 2592000
             res.status(200).json(result);
           }
           if(error)

@@ -16,6 +16,7 @@ const Step3 = () =>{
       const { orderId } = values
       const str = location.pathname
       const amount = str.substring(str.lastIndexOf('/') + 1)
+      
       const createOrder = async() => {
         fetch(`/createorder/${amount}`, {
           method:"get",
@@ -38,19 +39,17 @@ const Step3 = () =>{
         }
         }).catch(err=>{
           console.log(err)
-          console.log(amount,orderId)
       })
       
       }
       useEffect(() => {
-          console.log("hi")
         if (amount > 0 && orderId != "") {
-            console.log("YO")
           showRazoryPay();
         }
       }, [orderId]);
     
       const showRazoryPay = () => {
+        console.log("Inside")
         const form = document.createElement("form");
         form.setAttribute("action",'http://localhost:7000/payment/callback');
         form.setAttribute("method", "POST");
@@ -73,7 +72,7 @@ const Step3 = () =>{
       };
 
     return (
-        <div className= "nav nav-black">
+        <div className= "nav">
             <div className="nav-contents">
             <img className = "nav-logo" src = {logo} alt = "" />    
             <a href="/signup" className= "nav-tab">Sign Out</a>

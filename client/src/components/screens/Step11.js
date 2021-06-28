@@ -10,6 +10,7 @@ const Step11 = () =>{
     
     const[password, setPassword] = useState("")
     const[email, setEmail] = useState("")
+    const [name, setName] = useState("")
     
 
     const PostData=()=>{
@@ -19,6 +20,7 @@ const Step11 = () =>{
                 "Content-Type":"application/json"
             },
             body:JSON.stringify({
+                name,
                 email,
                 password
             })
@@ -48,6 +50,12 @@ const Step11 = () =>{
                 <h1>Create a password to start your membership</h1>
                 <h3>Just a few more steps and you're done!</h3>
                 <h3>We hate paperwork, too.</h3>
+                <input 
+                type="text"
+                placeholder="name"
+                value={name}
+                onChange={(e)=>setName(e.target.value)}
+                />
                 <input 
                 type="email"
                 placeholder="email"

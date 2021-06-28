@@ -20,6 +20,7 @@ router.post('/signup',async(req,res)=>{
         const user = await User.create({email,password:hashedpassword,name,friends : [name]})
         await signUpEmail(user)
         await user.save()
+        // res.json(user)
         return res.json({message:"Saved successfully"})
             
     }catch(err){
@@ -32,10 +33,10 @@ router.post('/signin',async(req,res)=>{
         const{ email, password } = req.body 
         await validateSignIn(email, password)
         const savedUser = await User.findByEmailAndPassword(email,password)
-        const validSubs = await Subscription.findOne({user_id:savedUser._id})
-        console.log(validSubs)
-        if(validSubs == null || validSubs.expiry >= Date.now())
-        return res.status(422).json({error: "Please subscribe to a plan first!" })
+        // const validSubs = await Subscription.findOne({user_id:savedUser._id})
+        // console.log(validSubs)
+        // if(validSubs == null || validSubs.expiry >= Date.now())
+        // return res.status(422).json({error: "Please subscribe to a plan first!" })
         const token = savedUser.generateToken()
         return res.json({message:"Successfully signed in",token,savedUser})
     }catch(err){

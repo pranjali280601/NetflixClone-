@@ -10,6 +10,7 @@ const { truncate } = require("fs");
 
 const Subscription=mongoose.model("Subscription")
 
+
 const router = express.Router();
 
 let orderId;
@@ -40,7 +41,7 @@ router.get("/createorder/:amount", async(req,res)=>{
 router.post("/payment/callback", async(req,res)=>{
   try{
         const {razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
-    
+        // console.log("requser ",req.user)
         const hash = crypto
           .createHmac("sha256", process.env.RZP_SECRET_KEY)
           .update(orderId + "|" + razorpay_payment_id)
@@ -50,7 +51,7 @@ router.post("/payment/callback", async(req,res)=>{
           const order = await Subscription.create({
             _id: razorpay_payment_id,
             orders: razorpay_order_id,
-            user_id: req.user
+            // user_id: req.user
           })
           await order.save()
           console.log("Verified")

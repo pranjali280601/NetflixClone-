@@ -1,7 +1,15 @@
-export const userAction = ( {user} ) =>{
+export const userAction = ( user ) =>{
     return {
         type: "USER",
-        payload : {user}
+        payload : { user }
+    }
+}
+
+export const addProfile = ( friends ) =>{
+    console.log("friends",friends)
+    return {
+        type: "UPDATE",
+        payload: { friends }
     }
 }
 

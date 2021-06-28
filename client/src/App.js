@@ -55,7 +55,7 @@ const Routing=()=>{
       <Signup />
       </Route>
       <Route exact path="/">
-        <Step1 />
+        <Signup />
       </Route>
       <Route exact path="/step1">
         <Step1 />

@@ -61,12 +61,14 @@ const Step3 = () =>{
         script.setAttribute("data-name", "Netflix");
         script.setAttribute("data-order_id", orderId);
         script.setAttribute("data-buttontext", `Pay Rs ${amount}`);
+        
         document.body.appendChild(form);
         form.appendChild(script);
         const input = document.createElement("input");
         input.type = "hidden";
         input.custom = "Hidden Element";
         input.name = "hidden";
+        
         form.appendChild(input);
       };
 
@@ -78,7 +80,7 @@ const Step3 = () =>{
             <div className = "step2-body">
             <div className='step2-mycard'>
             <div className='step3-auth-card' >
-            <span class="material-icons" style={{color:"red", fontSize:"50px", lineHeight:"1.5"}}>lock</span>
+            <span className = "material-icons" style={{color:"red", fontSize:"50px", lineHeight:"1.5"}}>lock</span>
                 <h2>STEP 3 OF 3</h2>
                 <h1>Set up your payment</h1>
                 <h3> Your membership starts as soon as you set up payment.</h3>

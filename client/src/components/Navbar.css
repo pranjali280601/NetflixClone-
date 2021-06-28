@@ -28,7 +28,7 @@
      position: fixed;
      top: -2px;
      left: 0;
-     width: 120px;
+     width: 140px;
      padding-left: 20px;
      object-fit: contain; 
      cursor: pointer;
@@ -40,38 +40,39 @@
      right: 20px;
      width: 35px;
      margin: 8px;
+     border-radius: 5px;
  }
  .home-nav-tabs{
     position: fixed;
     top: 2px;
-    left: 140px;
+    left: 120px;
     margin: 8px;
-
  }
  .nav-search{
     margin-left: 80%;
     width:10%;
  }
- input[type=text] {
-    width: 30% !important;
-    font-size: 14px !important;
-    color: white !important;
-    background-image: url("http://assets.stickpng.com/thumbs/585e4ae1cb11b227491c3393.png");
-    background-size: 50%; 
+ .nav-search input[type=text] {
+    width: 1% ;
+    font-size: 12px ;
+    color: white ;
+    border-bottom: none !important;
+    background-image: url("https://www.pinclipart.com/picdir/big/142-1425732_google-web-search-icon-search-icon-png-white.png");
+    background-size: 120%; 
     background-repeat: no-repeat;
     box-shadow: none !important;
     cursor: pointer;
-    height: 90% !important;
-    padding: 12px 20px 12px 40px;
+    height: 10% ;
+    padding: 10px;
     -webkit-transition: width 0.4s ease-in-out !important;
     transition: width 0.4s ease-in-out !important;
   } 
   
-input[type=text]:focus {
+  .nav-search input[type=text]:focus {
     border: 1.5px solid #ccc !important;
     background-image: none !important;
     border-radius: 2px !important;
-    width: 120% !important;
+    width: 80% !important;
     box-shadow: none !important;
   }
  
@@ -110,6 +111,7 @@ li a:hover {
 }
 .dropdown-content{
     color: white;
+   
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     
@@ -119,25 +121,44 @@ li a:hover {
     width: 150%; 
 }
 
-/* .img-dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .img-dropdown-content {
-    display: none;
+.Menu{
+    position: fixed;
+    right: 30px;
+    margin: 2.5em 6em;
+}
+
+.m-item{
     position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    
+    width: 100px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: none;
+
+    padding: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+    color: #EDFFEC;
+    cursor: pointer;
+
+    transition: 1s;
+}
+
+.m-logo{
     z-index: 1;
-  }
-  
-  .img-dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  .desc {
-    padding: 15px;
-    text-align: center;
-  } */
+}
+.open-1{
+    top: 2px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.open-2{
+    top: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.open-3{
+    top: 58px;
+    background-color: rgba(0, 0, 0, 0.8);
+}

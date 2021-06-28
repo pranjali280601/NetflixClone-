@@ -15,10 +15,10 @@ const Step1 = () =>{
             <div className = "step1-body">
             <div className='step1-mycard'>
             <div className='step1-auth-card' >
-                <i class="medium material-icons" style={{color:"red"}}>laptop</i>
-                <i class="medium material-icons" style={{color:"red"}}> desktop_windows</i>
-                <i class="medium material-icons" style={{color:"red"}}> tablet_android</i>
-                <i class="small material-icons" style={{color:"red"}}> phone_android</i>
+                <i className="medium material-icons" style={{color:"red"}}>laptop</i>
+                <i className="medium material-icons" style={{color:"red"}}> desktop_windows</i>
+                <i className="medium material-icons" style={{color:"red"}}> tablet_android</i>
+                <i className="small material-icons" style={{color:"red"}}> phone_android</i>
                 <h2>STEP 1 OF 3</h2>
                 <h1>Finish setting up your account</h1>
                 <h3>Netflix is personalised for you. Create a password to watch on any device at any time.</h3>

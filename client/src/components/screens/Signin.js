@@ -31,9 +31,9 @@ const SignIn=()=>{
                 }
                 else{
                     localStorage.setItem("jwt",data.token)
-                    localStorage.setItem("user",JSON.stringify(data.user))
-                    dispatch(userAction(data.user))
-                    history.push('/home')
+                    localStorage.setItem("user",JSON.stringify(data.savedUser))
+                    dispatch(userAction(data.savedUser))
+                    history.push('/profiles')
                 }
             }).catch(err=>{
                 console.log(err)

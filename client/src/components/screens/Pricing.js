@@ -34,27 +34,28 @@ const Pricing = () =>{
                     <thead>
                         <tr>
                             <th></th>
-                            <th><button class=" waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
+                            <th><button className=" waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(199)}>
                             Mobile
                             </button></th>
                             <th>
-                            <button class="waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
+                            <button className="waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(499)}>
                             Basic
                             </button>
                             </th>
-                            <th><button class=" waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
+                            <th><button className=" waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(649)}>
                             Standard
                             </button></th>
-                            <th><button class="waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
+                            <th><button className="waves-effect waves-light pricing-btn-style #e53935 red darken-1" 
                              onClick={() => setamount(799)}>
                             Premium
                             </button>
                            </th>
                         </tr>
                     </thead>
+                    <tbody>
                 <tr>
                     <th>Monthly price</th>
                     <td>₹ 199</td>
@@ -78,32 +79,32 @@ const Pricing = () =>{
                 </tr>
                 <tr>
                     <th rowSpan = "4">Devices you can use to watch</th>
-                    <td><i class="small material-icons" style={{color:"red"}}> phone_android</i><br></br> Phone</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> phone_android</i><br></br>Phone</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> phone_android</i><br></br>Phone</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> phone_android</i><br></br>Phone</td>
+                    <td><i className ="small material-icons" style={{color:"red"}}> phone_android</i><br></br> Phone</td>
+                    <td><i className ="small material-icons" style={{color:"red"}}> phone_android</i><br></br>Phone</td>
+                    <td><i className ="small material-icons" style={{color:"red"}}> phone_android</i><br></br>Phone</td>
+                    <td><i className ="small material-icons" style={{color:"red"}}> phone_android</i><br></br>Phone</td>
                 </tr>
                 <tr>
                     
-                    <td><i class="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tablet_android</i><br></br>Tablet</td>
                     <td></td>
                 </tr>
                 <tr>
                     <th></th>
-                    <td><i class="small material-icons" style={{color:"red"}}> desktop_windows</i><br></br>Computer</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> desktop_windows</i><br></br>Computer</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> desktop_windows</i><br></br>Computer</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> desktop_windows</i><br></br>Computer</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> desktop_windows</i><br></br>Computer</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> desktop_windows</i><br></br>Computer</td>
                 </tr>
                 <tr>
                     <th></th>
-                    <td><i class="small material-icons" style={{color:"red"}}> tv</i><br></br>TV</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> tv</i><br></br>TV</td>
-                    <td><i class="small material-icons" style={{color:"red"}}> tv</i><br></br>TV</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tv</i><br></br>TV</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tv</i><br></br>TV</td>
+                    <td><i className="small material-icons" style={{color:"red"}}> tv</i><br></br>TV</td>
                 </tr>
-                
+                </tbody>
                 </table>
                 <h2>Plan selected : Rs {amount}</h2>
                 <h2>HD (720p), Full HD (1080p), Ultra HD (4K) and HDR availability subject to your internet service and device capabilities.

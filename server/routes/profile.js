@@ -6,13 +6,23 @@ const User = mongoose.model('User')
 
 const requireLogin = require('../middlewares/requireLogin')
 
+router.get('/allfriends', requireLogin, async(req,res)=>{
+    try{
+        console.log("req.user",req.user)
+        const user = await User.findById({_id:req.user._id})
+        console.log(user)
+        res.json(user)
 
-router.post('/createfriendprofiles', requireLogin, async ( req, res )=>{ 
-    const { name, _id } = req.body
+    }catch(err){
+        return res.status(422).json({error:err.message})
+    }
+})
+
+router.put('/createfriendprofiles', requireLogin, async ( req, res )=>{ 
+    const { friend, _id } = req.body
     const user = await User.findById(_id)
-    if( user.friends.length >= 4)
-    return res.json("Cannot add more than 4 profiles!") 
-    user.friends.push(name)
+    user.friends.push(friend)
+    user.save()
     res.json(user)
 })
 

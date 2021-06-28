@@ -48,6 +48,14 @@
     padding-left: 10px;
     
 }
+.step11-input-field input[type= text], textarea {
+    padding-left: 10px ;
+    background: white ;
+    border:1px solid black ;
+    border-radius: 2px ;
+    height: 60px ;
+}
+
 .step11-input-field input[type= email], textarea {
     padding-left: 10px;
     background: white;
@@ -63,13 +71,12 @@
     height: 60px;
 }
 
-.step11-input-field input[type=email]:focus {
-
-    border-bottom: none !important;
+.step11-input-field input[type=email]:focus { 
     box-shadow: none !important;
 }
 .step11-input-field input[type=password]:focus {
-
-    border-bottom: none !important;
     box-shadow:none !important;
+}
+.step11-input-field input[type=text]:focus { 
+    box-shadow: none !important;
 }

@@ -90,7 +90,7 @@ ul {
     padding: 0;
 }
 li {
-    float: left;
+    float: right;
 }
   
 li a:hover {
@@ -111,7 +111,7 @@ li a:hover {
 }
 .dropdown-content{
     color: white;
-   
+   left: -60%;
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     
@@ -120,45 +120,7 @@ li a:hover {
     text-align: center;
     width: 150%; 
 }
-
-.Menu{
-    position: fixed;
-    right: 30px;
-    margin: 2.5em 6em;
-}
-
-.m-item{
-    position: absolute;
-    
-    width: 100px;
-    background-color: rgba(0, 0, 0, 0.8);
-    box-shadow: none;
-
-    padding: 3px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 1rem;
-    color: #EDFFEC;
-    cursor: pointer;
-
-    transition: 1s;
-}
-
-.m-logo{
-    z-index: 1;
-}
-.open-1{
-    top: 2px;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-.open-2{
-    top: 30px;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-.open-3{
-    top: 58px;
-    background-color: rgba(0, 0, 0, 0.8);
+.dropdown-trigger-1{
+    text-align: center;
+    width: 35%; 
 }

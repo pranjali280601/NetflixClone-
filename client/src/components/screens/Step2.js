@@ -8,7 +8,7 @@ const Step2 = () =>{
     const history = useHistory()
 
     return (
-        <div className= "nav">
+        <div className= "nav nav-black">
             <div className="nav-contents">
             <img className = "nav-logo" src = {logo} alt = "" />    
             <a href="/signin" className= "nav-tab">Sign Out</a>
@@ -26,12 +26,8 @@ const Step2 = () =>{
                     See the Plans   
                 </button>
                </div>
-               </div>
-                
-            </div>
-                    
-               
-                
+               </div> 
+            </div> 
             </div>
         </div>
     )

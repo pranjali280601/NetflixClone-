@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import YouTube from 'react-youtube';
 import movieTrailer from 'movie-trailer';
 import './Banner.css'
 import axios from "./axios";
 import requests from "./request"
-
+import M from "materialize-css"
 
 const Banner=()=>{
 
     const [movie, setMovie] = useState([])
     const [trailerUrl, setTrailerUrl] = useState("")
+    const profileModal = useRef(null)
+
+    useEffect(()=>{
+        M.Modal.init(profileModal.current)
+    },[])
 
     useEffect(() => {
         async function fetchData(){
@@ -52,7 +57,7 @@ const Banner=()=>{
         }
 
     }
-
+console.log(movie)
     return (
         <div className = "home-screen">
         <div className = "home-bg">
@@ -67,7 +72,7 @@ const Banner=()=>{
                 </h1>
                 <div className = "home-banner-btns">
                     <button className = "home-banner-btn"  onClick = {() => handleClick(movie)}>Play</button>
-                    <button className = "home-banner-btn">More info</button>
+                    <button className = "home-banner-btn" onClick={()=>{M.Modal.getInstance(profileModal.current).open()}}>More info</button>
                 </div>
                 <h1 className = "home-banner-des">
                     {truncate(movie?.overview,100)}</h1>
@@ -76,6 +81,23 @@ const Banner=()=>{
             {trailerUrl && <YouTube videoId = {trailerUrl} opts = {opts} />}
 
         </header>
+        <div id="modal1" className=" banner-modal modal" ref={profileModal} >
+          <div className="modal-content">
+              <img src = {`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
+              style={{width:"100%", margin:"5px"}} alt="" />
+              <h3>Name: {movie?.name}</h3>
+              <h3>Overview:  {movie?.overview}</h3>
+              <h3>Popularity: {(movie?.popularity)}</h3> 
+            <h3>Release Date: {movie?.first_air_date}</h3>
+            <h3>Rating: {movie?.vote_average}</h3>
+    </div>
+    <div className=" modal-footer #000000 black">
+      <button className="modal-close waves-effect waves btn-flat" 
+      style={{color:"white"}}
+      onClick={()=>{M.Modal.getInstance(profileModal.current).close()}}> Close
+       </button>
+    </div>
+  </div>
         </div>
         </div>
     )

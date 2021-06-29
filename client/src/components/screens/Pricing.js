@@ -15,7 +15,7 @@ const Pricing = () =>{
     return (
         <div className = "pricing-screen">
         <div className = "pricing-bg">    
-            <div className = "step2-body">
+            <div className = "pricing-body">
                 <div className= "nav nav-black">
                     <div className="nav-contents">
                         <img className = "nav-logo" src = {logo} alt = "" />    

@@ -18,6 +18,8 @@ import Step3 from "./components/screens/Step3"
 import Pricing from "./components/screens/Pricing"
 import Profiles from "./components/screens/Profiles"
 import SubscribePlan from './components/screens/SubscribePlan';
+import ForgotPassword from './components/screens/ForgotPassword';
+import NewPassword from './components/screens/NewPassword';
 
 import './App.css'
 
@@ -47,6 +49,12 @@ const Routing=()=>{
       <Switch>
       <Route exact path="/signin">
       <Signin />
+      </Route>
+      <Route exact path="/forgotpassword">
+        <ForgotPassword />
+        </Route>
+        <Route exact path="/reset/:token">
+      <NewPassword />
       </Route>
       <Route exact path="/subscribePlan">
       <SubscribePlan />

@@ -29,9 +29,10 @@ router.get("/createorder/:amount", async(req,res)=>{
         currency:"INR",
         receipt: uniquId(),
         } 
+
         const order = await instance.orders.create(options)
         orderId = order.id
-        res.json(order)
+        return res.json(order)
   } catch(err){
     return res.status(422).json({error:err.message})
   }
@@ -41,7 +42,7 @@ router.get("/createorder/:amount", async(req,res)=>{
 router.post("/payment/callback", async(req,res)=>{
   try{
         const {razorpay_payment_id, razorpay_order_id, razorpay_signature } = req.body
-        // console.log("requser ",req.user)
+       
         const hash = crypto
           .createHmac("sha256", process.env.RZP_SECRET_KEY)
           .update(orderId + "|" + razorpay_payment_id)
@@ -50,8 +51,7 @@ router.post("/payment/callback", async(req,res)=>{
         if (razorpay_signature === hash) {
           const order = await Subscription.create({
             _id: razorpay_payment_id,
-            orders: razorpay_order_id,
-            // user_id: req.user
+            orders: razorpay_order_id
           })
           await order.save()
           console.log("Verified")
@@ -64,7 +64,7 @@ router.post("/payment/callback", async(req,res)=>{
 })
  
 //verifying payment status
-router.get("/payments/:paymentId", async(req, res) => {  
+router.get("/payments/:paymentId/:user_id", async(req, res) => {  
   try{
      
       const data = await Subscription.findById(req.params.paymentId)
@@ -76,6 +76,9 @@ router.get("/payments/:paymentId", async(req, res) => {
         async function (error, response, body) {
           if (body) {
             const result = JSON.parse(body)
+            data.user_id = req.params.user_id
+            data.status = "Success"
+            await data.save()
             res.status(200).json(result);
           }
           if(error)

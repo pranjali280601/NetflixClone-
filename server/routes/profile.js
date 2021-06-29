@@ -8,7 +8,7 @@ const requireLogin = require('../middlewares/requireLogin')
 
 router.get('/allfriends', requireLogin, async(req,res)=>{
     try{
-        console.log("req.user",req.user)
+        // console.log("req.user",req.user)
         const user = await User.findById({_id:req.user._id})
         console.log(user)
         res.json(user)

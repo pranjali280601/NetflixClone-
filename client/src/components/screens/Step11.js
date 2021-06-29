@@ -1,12 +1,15 @@
 import React, { useState } from "react"
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from "react-redux"
 import M from "materialize-css"
 import logo from "../../images/logo.png"
+import { userAction } from "../../Redux/Reducer/user/user.action" 
 import "../style/Step11.css"
 
 const Step11 = () =>{
 
     const history=useHistory()
+    const dispatch = useDispatch()
     
     const[password, setPassword] = useState("")
     const[email, setEmail] = useState("")
@@ -31,6 +34,8 @@ const Step11 = () =>{
                    M.toast({html: data.error,classes:"#f44336 red"})
                 }
                 else{
+                    localStorage.setItem("user",JSON.stringify(data.user))
+                    dispatch(userAction(data.user))
                     history.push('/step2')
                 }
             }).catch(err=>{

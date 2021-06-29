@@ -18,7 +18,7 @@ thead th{
 td{
     text-align: center;
 }
-.step2-body{
+.pricing-body{
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -31,19 +31,19 @@ td{
    
 }
 
-.step2-body h1{
+.pricing-body h1{
     color: black;
     font-size: 1.5rem;
     font-weight: 600;
     margin-top: -10px;
 }
-.step2-body h2{
+.pricing-body h2{
     color: black;
     font-size: 1rem;
     font-weight: 400;
 
 }
-.step2-body h3{
+.pricing-body h3{
     color: black;
     font-size: 1.1rem;
     margin-top: -10px;

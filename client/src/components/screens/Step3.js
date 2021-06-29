@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
 import {useHistory, useLocation} from 'react-router-dom'
+import {connect} from "react-redux"
+import logo from "../../images/logo.png"
 import "../style/Step3.css"
 
 
 const Step3 = () =>{
     
     const location = useLocation()
-
+    const userLs = localStorage.getItem("user")
+    const userObj = JSON.parse(userLs)
+    
     const [values, setValues] = useState({
         orderId: "",
         error: "",
@@ -15,11 +19,12 @@ const Step3 = () =>{
       const { orderId } = values
       const str = location.pathname
       const amount = str.substring(str.lastIndexOf('/') + 1)
-      
+      const user_id = userObj._id
       const createOrder = async() => {
         fetch(`/createorder/${amount}`, {
           method:"get",
                   headers:{
+                    "Authorization":"Bearer "+localStorage.getItem("jwt"),
                       "Content-Type":"application/json"
                   }
         })
@@ -52,6 +57,7 @@ const Step3 = () =>{
         const form = document.createElement("form");
         form.setAttribute("action",'http://localhost:7000/payment/callback');
         form.setAttribute("method", "POST");
+        
     
         const script = document.createElement("script");
     
@@ -73,10 +79,10 @@ const Step3 = () =>{
       };
 
     return (
-        // <div className= "nav">
-        //     <div className="nav-contents">
-        //     <img className = "nav-logo" src = {logo} alt = "" />    
-        //     <a href="/signup" className= "nav-tab">Sign Out</a>
+      <div className= "nav nav-black">
+      <div className="nav-contents">
+      <img className = "nav-logo" src = {logo} alt = "" />    
+      <a href="/signin" className= "nav-tab">Sign Out</a>
             <div className = "step2-body">
             <div className='step2-mycard'>
             <div className='step3-auth-card' >
@@ -89,11 +95,11 @@ const Step3 = () =>{
                 <button className="step3-btn-style #ffffff white"
                  onClick={()=>{createOrder()}}>
                     Credit or Debit card 
-                    <img className="btn-img" style={{marginLeft:"0"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/svg/visa-v3.svg" alt=""/>
-                    <img className="btn-img" style={{marginLeft:"3%"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/svg/mastercard-v2.svg" alt=""/>
-                    <img className="btn-img" style={{marginLeft:"6%"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/svg/amex-v2.svg" alt=""/>
-                    <img className="btn-img" style={{marginLeft:"9%"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/icon_dinersclub_v2_2x.png" alt=""/>
-                    
+                    {/* <img className="btn-img" style={{marginLeft:"120px"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/svg/visa-v3.svg" alt=""/>
+                    <img className="btn-img" style={{marginLeft:"160px"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/svg/mastercard-v2.svg" alt=""/>
+                    <img className="btn-img" style={{marginLeft:"200px"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/svg/amex-v2.svg" alt=""/>
+                    <img className="btn-img" style={{marginLeft:"240px"}} src = "https://assets.nflxext.com/ffe/siteui/acquisition/payment/icon_dinersclub_v2_2x.png" alt=""/>
+                     */}
                 </button>
                </div>
                </div>
@@ -102,10 +108,10 @@ const Step3 = () =>{
                     
                
                 
-        //     </div>
-        // </div>
+         </div>
+        </div>
     )
 
 }
-
-export default Step3
+const mapStateToProps = state => ({user: state.user})
+export default connect(mapStateToProps)(Step3)

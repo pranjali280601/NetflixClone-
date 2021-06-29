@@ -56,13 +56,18 @@ userSchema.methods.generateToken = function(){
 
 userSchema.statics.resetSession = async function (sentToken, newPassword){
     const user = await User.findOne({resetToken:sentToken,expireToken:{$gt:Date.now()}})
-    if(!user)
+    console.log(user,sentToken)
+    if(user==null){
     throw new Error("Session Expired. Please try again.")
+    }
+    console.log("HELLO")
     const hashedpassword= await bcrypt.hash(newPassword,12)
+    console.log("BRO")
     user.password=hashedpassword
     user.resetToken=undefined
     user.expireToken=undefined
     user.save()    
+    return user
 }
 
 userSchema.statics.findByEmail = async function (email){

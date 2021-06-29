@@ -18,6 +18,7 @@ module.exports = {
     },
 
     resetPswdEmail : function(user,token){
+        console.log(token)
         transporter.sendMail({
             to:user.email,
             from:"pranjalsharma2806@gmail.com",

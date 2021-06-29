@@ -1,8 +1,7 @@
 import React,{ useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from "react-redux"
-import { userAction } from "../../Redux/Reducer/user/user.action"
-// import { UserContext } from '../../App'
+import { userAction, clearUserAction } from "../../Redux/Reducer/user/user.action"
 import logo from "../../images/logo.png"
 import M from 'materialize-css'
 import "../style/Signin.css"
@@ -13,6 +12,9 @@ const SignIn=()=>{
     const[password,setPassword] = useState("")
     const[email,setEmail] = useState("")
    
+    localStorage.clear()
+    dispatch(clearUserAction())
+
     const PostData=()=>{
         fetch("/signin",{
             method:"post",
@@ -68,6 +70,9 @@ const SignIn=()=>{
                 onClick={()=>PostData()}>
                     Sign In
                 </button>
+                <Link to="/forgotpassword"><h5 style={{fontSize:"15px", color:"grey"}}>
+                    Need help?  </h5></Link>
+                
                 <h5 style={{fontSize:"15px", color:"grey"}}>
                     New to Netflix?  
                     <Link to="/signup" style={{color: "white"}}> Sign up now</Link>

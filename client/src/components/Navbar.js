@@ -1,15 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from "react-redux"
 import logo from '../images/logo.png'
 import profileIcon1 from '../images/profileIcon1.png'
 import './Navbar.css'
 import M from "materialize-css"
+import { clearUserAction } from '../Redux/Reducer/user/user.action';
+
 const NavBar=()=>{
     const [show, handleShow] = useState(false)
     const [query, setQuery] = useState("");
     const history = useHistory()
     const dropdownTrigger = useRef(null)
+    const dropdownTrigger1 = useRef(null)
+    const dispatch = useDispatch()
+
     const API_KEY = "5ffcade0ca3ddc37e97defe7720cb4b0"
+
     const transitionNavbar = ()=>{
         if(window.scrollY > 100)
         handleShow(true)
@@ -24,6 +31,9 @@ const NavBar=()=>{
 
     useEffect(()=>{
         M.Dropdown.init(dropdownTrigger.current)
+      },[])
+      useEffect(()=>{
+        M.Dropdown.init(dropdownTrigger1.current)
       },[])
 
     const searchMovies = async (query) => {
@@ -40,13 +50,6 @@ const NavBar=()=>{
 
     }
 
-    const [openMenu, setOpenMenu] = useState(false)
-
-    const setClassNames = num => {
-        const classArr = ["m-item"];
-        if (openMenu) classArr.push(`open-${num}`)
-        return classArr.join(' ')
-    }
 
     return (
         
@@ -66,15 +69,30 @@ const NavBar=()=>{
                         <li><a href="/home"style={{color:"white"}}>My List</a></li>
                         </ul>
                 </div>
+                <a className='dropdown-trigger-1' href='#' 
+                    data-target='dropdown2' ref={dropdownTrigger1}>
+                        <img className="home-nav-profile-icon " src={profileIcon1}  alt=""/></a>
+                
+                <ul id='dropdown2' class='dropdown-content'>
+                        <li><a href="/profiles" style={{color:"white"}}>Profiles</a></li>
+                        <li><a href="/home" style={{color:"white"}}>Account</a></li>
+                        <li><a style={{color:"white"}} onClick={()=>{
+                            localStorage.clear()
+                            dispatch(clearUserAction())
+                            history.push('/signin')
+                            }}>Logout</a></li>
+                        
+                       
+                </ul>
+                
                 {/* <div  className = "nav-search">
                 <input type="text" placeholder="" value={query}
 	            onChange={(e) => searchMovies(setQuery(e.target.value))} /> 
                 </div> */}
-                <div className="Menu">
-                    <div className={"m-item m-logo"}
-                            onClick={() => setOpenMenu(!openMenu)}>
-                        <img className="home-nav-profile-icon" src={profileIcon1}/>
-                        </div>
+                {/* <div className="Menu">
+                    <div className={"m-item"}>
+                        <img className="home-nav-profile-icon" src={profileIcon1} onClick={() => setOpenMenu(!openMenu)}/>
+                        
                         <div className={setClassNames(1)}
                             onClick={() => history.push("/profiles")}>
                             Profiles
@@ -84,10 +102,15 @@ const NavBar=()=>{
                             Account
                         </div>
                         <div className={setClassNames(3)}
-                            onClick={() => history.push("/signup")}>
+                           onClick={()=>{
+                            localStorage.clear()
+                            dispatch(clearUserAction())
+                            history.push('/signin')
+                            }}>
                             Logout
                         </div>
-                </div>
+                        </div>
+                </div> */}
             </div>
         </div>
         

@@ -11,6 +11,10 @@ const PaymentStatus = ({ match }) => {
     error: "",
   });
 
+  const userLs = localStorage.getItem("user")
+  const userObj = JSON.parse(userLs)
+  const user_id = userObj._id
+
   const { amount, error } = values;
   
   const str = location.pathname
@@ -23,7 +27,7 @@ const PaymentStatus = ({ match }) => {
 
   const getPaymentStatus = (paymentId) => {
     console.log("Inside")
-    fetch(`/payments/${paymentId}`, {
+    fetch(`/payments/${paymentId}/${user_id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

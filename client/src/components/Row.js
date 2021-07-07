@@ -4,7 +4,7 @@ import movieTrailer from "movie-trailer"
 import axios from "./axios"
 import './Row.css'
 
-const Row = ({ title, fetchURL, isLargeRow = false }) =>{
+const Row = ({ title, fetchURL, isFirstRow = true}) =>{
     const [movies, setMovies] = useState([])
     const [trailerUrl, setTrailerUrl] = useState("")
 
@@ -31,12 +31,12 @@ const Row = ({ title, fetchURL, isLargeRow = false }) =>{
 
     const handleClick = (movie) =>{
         if(trailerUrl)
-        setTrailerUrl('')
+        setTrailerUrl("")
         else{
             movieTrailer(movie?.name || "")
             .then((url) => {
-                const urlParams = new URLSearchParams(new URL(url).search)
-                setTrailerUrl(urlParams.get('v'))
+                const urlParams = new URLSearchParams(new URL(url).search);
+                setTrailerUrl(urlParams.get('v'));
 
             }).catch(error =>
                 console.log(error))
@@ -51,13 +51,14 @@ const Row = ({ title, fetchURL, isLargeRow = false }) =>{
        
             {movies && movies.map((movie) => (
                 
-                // (isLargeRow && movie.poster_path) ||
-                // (!isLargeRow && movie.backdrop_path) && (
+                // (isFirstRow && movie.poster_path) ||
+                // (!isFirstRow && movie.backdrop_path) && (
+                    movie.poster_path &&
             <img
-            className = {`row-poster ${isLargeRow && "row-posterLarge"}`}
+            className = {`row-poster ${isFirstRow && "row-posterLarge"}`}
             key = {movie.id}
             onClick = {() => handleClick(movie)}
-             src = {`${baseURL}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} alt ={movie.name} />
+             src = {`${baseURL}${isFirstRow ? movie.poster_path : movie.backdrop_path}`} alt ={movie.name} />
             )
             
             )}

@@ -1,179 +1,179 @@
 .signup-screen{
-    position: relative;
-    height: 100%;
-    background: url("https://cdn.mos.cms.futurecdn.net/98GnqFKaUMYU3GG5HxhLWZ.jpg") center no-repeat;
-    background-size: cover;
+  position: relative;
+  height: 100%;
+  background: url("https://cdn.mos.cms.futurecdn.net/98GnqFKaUMYU3GG5HxhLWZ.jpg") center no-repeat;
+  background-size: cover;
 }
 
 .gradient{
-    width: 100%;
-    z-index: 1;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    background-image: linear-gradient(
-        to top,
-        rgba(0,0,0,0.8) 0,
-        rgba(0,0,0,0) 60%,
-        rgba(0,0,0,0.8) 100%
-    );
+  width: 100%;
+  z-index: 1;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+      to top,
+      rgba(0,0,0,0.8) 0,
+      rgba(0,0,0,0) 60%,
+      rgba(0,0,0,0.8) 100%
+  );
 }
 .signup-logo{
-    position: fixed;
-    top: 5px;
-    left: 2%;
-    width: 180px;
-    object-fit: contain;
-    padding-left: 20px;
+  position: fixed;
+  top: 5px;
+  left: 2%;
+  width: 180px;
+  object-fit: contain;
+  padding-left: 20px;
 }
 
 .signup-btn{
-    position: fixed;
-    right: 5%;
-    top: 30px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #e50914;
-    font-weight: 600;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  position: fixed;
+  right: 5%;
+  top: 30px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e50914;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .signup-body{
-    position: absolute;
-    top: 15%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    z-index: 1;
-    padding: 20px; 
-    color: white;
-    left: 0;
-    right: 0;
+  position: absolute;
+  top: 15%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  z-index: 1;
+  padding: 20px; 
+  color: white;
+  left: 0;
+  right: 0;
 }
 
 .signup-body h1{
-    font-size:250%;
-    font-weight: 700;
-    margin-bottom: 20px;
-    
+  font-size:250%;
+  font-weight: 700;
+  margin-bottom: 20px;
+  
 }
 .signup-body h2{
-    font-size: 200%;
-    font-weight: 400;
-    margin-bottom: 30px;
-    
+  font-size: 200%;
+  font-weight: 400;
+  margin-bottom: 30px;
+  
 }
 .signup-body h3{
-    font-size: 150%;
-    font-weight: 400;
+  font-size: 150%;
+  font-weight: 400;
 }
 
 .signup-input > form > input{
-    padding: 10px;
-    outline-width: 0;
-    height: 30px;
-    width: 20%;
-    background: white;
-    border: none;
-    max-width: 400px;
-    text-decoration: none !important;
+  padding: 10px;
+  outline-width: 0;
+  height: 30px;
+  width: 20%;
+  background: white;
+  border: none;
+  max-width: 400px;
+  text-decoration: none !important;
 
 }
 .signup-input > form > input[type = "email"], textarea{
-    background: white;
-    
+  background: white;
+  
 }
 .signip-input > form > input[type = "email"]:focus {
-  
-    border-bottom: none !important;
-    box-shadow:none !important;
-  }
+
+  border-bottom: none !important;
+  box-shadow:none !important;
+}
 
 .btn-get-started{
-    padding: 16px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #e50914 ;
-    border: none;
-    border-radius: 4px;
-    height: 47px;
-    font-weight: 600;
-    cursor: pointer;
+  padding: 16px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e50914 ;
+  border: none;
+  border-radius: 4px;
+  height: 47px;
+  font-weight: 600;
+  cursor: pointer;
 
 }
 .btn-get-started:focus {
-    background:  rgb(219, 28, 28) !important;
-  }
+  background:  rgb(219, 28, 28) !important;
+}
 
-  .card{
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  .mycard{
-    margin-left: auto;
-    margin-right: auto;
-    border:none !important;
-    
-  }
-  .auth-card{
-    border:none !important;
-    padding-top: 1px;
-    padding: 50px;
-    text-align: left;
-    max-width: 400px;
-    margin: auto;
-    
-  }
-  .input-field input[type= email], textarea {
-    padding-left: 10px;
-    background: rgb(56, 55, 55);
-    border-radius: 5px;
-   
-  }
-  .input-field input[type= password], textarea {
-    padding-left: 10px;
-    background: rgb(56, 55, 55);
-    border-radius: 5px;
-    
-  }
-  .input-field input[type=email]:focus {
-    background: rgb(235, 246, 250);
-    border-bottom: none !important;
-    box-shadow:none !important;
-  }
-  .input-field input[type=password]:focus {
-    background: rgb(235, 246, 250);
-    border-bottom: none !important;
-    box-shadow:none !important;
-  }
-  .banner{
-    position: relative;
-    height: 448px;
-    color: black;
-    object-fit: contain;
-    border-bottom: 10px solid rgb(61, 61, 61);
-    border-top: 10px solid rgb(61, 61, 61) ;
-  }
-  .banner-contents{
-    margin-top: 10%;
-    margin-left: 30px;
-    padding: 2%;
-    height: 190px;
-    color: white;
+.card{
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.mycard{
+  margin-left: auto;
+  margin-right: auto;
+  border:none !important;
+  
+}
+.auth-card{
+  border:none !important;
+  padding-top: 1px;
+  padding: 50px;
+  text-align: left;
+  max-width: 400px;
+  margin: auto;
+  
+}
+.input-field input[type= email], textarea {
+  padding-left: 10px;
+  background: rgb(56, 55, 55);
+  border-radius: 5px;
+ 
+}
+.input-field input[type= password], textarea {
+  padding-left: 10px;
+  background: rgb(56, 55, 55);
+  border-radius: 5px;
+  
+}
+.input-field input[type=email]:focus {
+  background: rgb(235, 246, 250);
+  border-bottom: none !important;
+  box-shadow:none !important;
+}
+.input-field input[type=password]:focus {
+  background: rgb(235, 246, 250);
+  border-bottom: none !important;
+  box-shadow:none !important;
+}
+.banner{
+  position: relative;
+  height: 448px;
+  color: black;
+  object-fit: contain;
+  border-bottom: 10px solid rgb(61, 61, 61);
+  border-top: 10px solid rgb(61, 61, 61) ;
+}
+.banner-contents{
+  margin-top: 10%;
+  margin-left: 30px;
+  padding: 2%;
+  height: 190px;
+  color: white;
 }
 .banner-contents h1{
-  font-weight: 600;
-  font-size: 300%;
+font-weight: 600;
+font-size: 300%;
 }
 .banner-contents h2{
-  font-weight: 400;
-  font-size: 200%;
+font-weight: 400;
+font-size: 200%;
 }
 .banner-img{  
-  top: 10px;
-  width: 70%;
-  padding:5px;
-  margin-top: 40px;
-  margin-left: 70px;
+top: 10px;
+width: 70%;
+padding:5px;
+margin-top: 40px;
+margin-left: 70px;
 }

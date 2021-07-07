@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch, useHistory } from 'react-router-dom'
 import { Provider } from "react-redux"
 import { useDispatch } from "react-redux"
 
-import { userAction } from './Redux/Reducer/user/user.action';
+import { userAction } from './Redux/Reducer/user/user.action'
 import store from "./Redux/store"
 
 import Home from "./components/screens/Home"
@@ -17,9 +17,14 @@ import Step2 from "./components/screens/Step2"
 import Step3 from "./components/screens/Step3"
 import Pricing from "./components/screens/Pricing"
 import Profiles from "./components/screens/Profiles"
-import SubscribePlan from './components/screens/SubscribePlan';
-import ForgotPassword from './components/screens/ForgotPassword';
-import NewPassword from './components/screens/NewPassword';
+import SubscribePlan from './components/screens/SubscribePlan'
+import ForgotPassword from './components/screens/ForgotPassword'
+import NewPassword from './components/screens/NewPassword'
+import Movies from './components/screens/Movies'
+import TVShows from './components/screens/TVShows'
+import NewnPopular from './components/screens/NewnPopular'
+
+
 
 import './App.css'
 
@@ -81,6 +86,15 @@ const Routing=()=>{
       </Route>
         <Route exact path="/Home">
         <Home />
+        </Route>
+        <Route exact path="/movies">
+        <Movies />
+        </Route>
+        <Route exact path="/tvshows">
+        <TVShows />
+        </Route>
+        <Route exact path="/newnpopular">
+        <NewnPopular />
         </Route>
         <Route exact path="/profiles">
         <Profiles />

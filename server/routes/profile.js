@@ -27,8 +27,9 @@ router.put('/createfriendprofiles', requireLogin, async ( req, res )=>{
 })
 
 router.put("/deletefriendprofiles",requireLogin,(req,res)=>{
-    const { name, _id } = req.body
-
+    const { deleteFriend, _id } = req.body
+    const name = deleteFriend
+    console.log("HI",name)
     User.findByIdAndUpdate(_id,{
         $pull:{friends: name}
     },{

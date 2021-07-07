@@ -62,11 +62,11 @@ const NavBar=()=>{
                     <i className= "material-icons">arrow_drop_down</i></a>
                         <ul id='dropdown1' class='dropdown-content'>
                         <li><a href="/home" style={{color:"white"}}>Home</a></li>
-                        <li><a href="/home" style={{color:"white"}}>TV shows</a></li>
+                        <li><a href="/tvshows" style={{color:"white"}}>TV shows</a></li>
                         
-                        <li><a href="/home" style={{color:"white"}}>Movies</a></li>
-                        <li><a href="/home" style={{color:"white"}}>New and Popular</a></li>
-                        <li><a href="/home"style={{color:"white"}}>My List</a></li>
+                        <li><a href="/movies" style={{color:"white"}}>Movies</a></li>
+                        <li><a href="/newnpopular" style={{color:"white"}}>New and Popular</a></li>
+                        {/* <li><a href="/home"style={{color:"white"}}>My List</a></li> */}
                         </ul>
                 </div>
                 <a className='dropdown-trigger-1' href='#' 

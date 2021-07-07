@@ -27,6 +27,8 @@ const Signup = () =>{
             </button>
             <div className = "gradient" />
             <div className = "signup-body">
+            <div className='signup-mycard'>
+            <div className='signup-card signup-auth-card' >
                     <h1>Unlimited movies, TV shows and more.</h1>
                     <h2>Watch anywhere. Cancel anytime.</h2>
                     <h3>Ready to watch? Enter your email to create or restart your membership.</h3>
@@ -40,9 +42,12 @@ const Signup = () =>{
                     </form>
 
                 </div>
+                </div>
+                </div>
             </div>
+            
             {/* <div className="banner #000000 black row">
-                <div className = "col s6">
+                <div className = "col l6 m6 s12">
                     <div className = "banner-contents">
                     <h1>Enjoy on your TV.</h1>
                     <h2>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</h2>
@@ -54,7 +59,7 @@ const Signup = () =>{
             </div> */}
            
             
-      
+           
         </div>
        
     </div>

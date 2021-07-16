@@ -30,7 +30,7 @@ const Banner=()=>{
     }, [])
 
     const truncate = (string, n) =>{
-        return (string?.length > n ? string.substr(0,n-1)+"..." : string)
+        return (string && string.length > n ? string.substr(0,n-1)+"..." : string)
     }
 
     const opts = {
@@ -47,7 +47,7 @@ const Banner=()=>{
         if(trailerUrl)
         setTrailerUrl('')
         else{
-            movieTrailer(movie?.name || "")
+            movieTrailer(movie && movie.name || "")
             .then((url) => {
                 const urlParams = new URLSearchParams(new URL(url).search)
                 setTrailerUrl(urlParams.get('v'))
@@ -63,19 +63,19 @@ console.log(movie)
         <div className = "home-bg">
         <header className = "home-banner" style = {{
             backgroundSize: "cover",
-            backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+            backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
             backgroundPosition: "center center"
         }}>
             <div className = "home-banner-contents">
                 <h1 className = "home-banner-title">
-                    {movie?.title || movie?.name || movie?.original_name}
+                    {movie && movie.title || movie.name || movie.original_name}
                 </h1>
                 <div className = "home-banner-btns">
                     <button className = "home-banner-btn"  onClick = {() => handleClick(movie)}>Play</button>
                     <button className = "home-banner-btn" onClick={()=>{M.Modal.getInstance(profileModal.current).open()}}>More info</button>
                 </div>
                 <h1 className = "home-banner-des">
-                    {truncate(movie?.overview,100)}</h1>
+                    {truncate(movie && movie.overview,100)}</h1>
             </div>
             <div className = "home-banner-fade-bottom" />
             {trailerUrl && <YouTube videoId = {trailerUrl} opts = {opts} />}
@@ -83,13 +83,13 @@ console.log(movie)
         </header>
         <div id="modal1" className=" banner-modal modal" ref={profileModal} >
           <div className="modal-content">
-              <img src = {`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} 
+              <img src = {`https://image.tmdb.org/t/p/original/${movie && movie.backdrop_path}`} 
               style={{width:"100%", margin:"5px"}} alt="" />
-              <h3>Name: {movie?.name}</h3>
-              <h3>Overview:  {movie?.overview}</h3>
-              <h3>Popularity: {(movie?.popularity)}</h3> 
-            <h3>Release Date: {movie?.first_air_date}</h3>
-            <h3>Rating: {movie?.vote_average}</h3>
+              <h3>Name: {movie && movie.name}</h3>
+              <h3>Overview:  {movie && movie.overview}</h3>
+              <h3>Popularity: {(movie && movie.popularity)}</h3> 
+            <h3>Release Date: {movie && movie.first_air_date}</h3>
+            <h3>Rating: {movie && movie.vote_average}</h3>
     </div>
     <div className=" modal-footer #000000 black">
       <button className="modal-close waves-effect waves btn-flat" 

@@ -12,9 +12,7 @@ const ForgotPassword = () => {
    
     const PostData=()=>{
         if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))
-        {
           return M.toast({html: "Invalid email",classes:"#f44336 red"})
-        }
         
         fetch("/resetpassword",{
             method:"post",

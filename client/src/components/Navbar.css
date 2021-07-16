@@ -26,7 +26,7 @@
 
  .home-nav-logo{
      position: fixed;
-     top: -2px;
+     top: -8px;
      left: 0;
      width: 140px;
      padding-left: 20px;
@@ -124,3 +124,20 @@ li a:hover {
     text-align: center;
     width: 35%; 
 }
+.profiless{
+    margin-left: 500px;
+    cursor: pointer;
+}
+
+.options {
+      display: none;
+      background-color: pink;
+      border-radius: 5px;
+      display: flex;
+        flex-direction: column;
+        position: absolute;
+    }
+.options span {
+      padding: 10px;
+      cursor: pointer;
+    }

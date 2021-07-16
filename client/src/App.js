@@ -41,11 +41,11 @@ const Routing=()=>{
     if(user){
       dispatch(userAction(user))
     }
-    else{
-      if(!history.location.pathname.startsWith('/reset'))
-      history.push("/signup")
+    // else{
+    //   if(!history.location.pathname.startsWith('/reset'))
+    //   history.push("/signup")
       
-    }
+    // }
   },[])
 
   return (

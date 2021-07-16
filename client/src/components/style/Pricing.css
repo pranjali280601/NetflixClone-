@@ -31,25 +31,6 @@ td{
    
 }
 
-.pricing-body h1{
-    color: black;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: -10px;
-}
-.pricing-body h2{
-    color: black;
-    font-size: 1rem;
-    font-weight: 400;
-
-}
-.pricing-body h3{
-    color: black;
-    font-size: 1.1rem;
-    margin-top: -10px;
-}
-
-
 .pricing-btn-style{
     font-size: 80%;
     color: #fff;
@@ -88,17 +69,4 @@ td{
     top: 0;
     text-align: center;
     padding: 20px; 
-}
- .footer{
-   position: absolute;
-    left:0;
-    bottom:0;
-    right:0;
-    width: 100%;
-    height: 30%;
-    color:#757575;
-    background-color: red;
-    background-color: #f3f3f3;
-    text-align: left;
-    padding: 20px;
 }

@@ -66,7 +66,7 @@ const NavBar=()=>{
                         
                         <li><a href="/movies" style={{color:"white"}}>Movies</a></li>
                         <li><a href="/newnpopular" style={{color:"white"}}>New and Popular</a></li>
-                        {/* <li><a href="/home"style={{color:"white"}}>My List</a></li> */}
+                        
                         </ul>
                 </div>
                 <a className='dropdown-trigger-1' href='#' 

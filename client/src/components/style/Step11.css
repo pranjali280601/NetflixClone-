@@ -1,6 +1,6 @@
 .step11-body{
     position: absolute;
-    top: 50%;
+    top: 7%;
     margin-left: auto;
     margin-right: auto;
     text-align: left;
@@ -10,24 +10,6 @@
     left: 0;
     right: 0;
 }
-.step11-body h1{
-    color: black;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-top: -10px;
-}
-.step11-body h2{
-    color: black;
-    font-size: 1rem;
-    font-weight: 400;
-
-}
-.step11-body h3{
-    color: black;
-    font-size: 1.1rem;
-    margin-top: -10px;
-}
-
 .step11-mycard{
     margin-top: 5%;
     margin-left: auto;

@@ -33,3 +33,33 @@
     transform: scale(1.09);
     opacity:1;
 }
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.itemInfoTop {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+}
+
+.limit {
+    border: 1px solid gray;
+    padding: 1px 3px;
+    margin: 0 10px;
+}
+  
+
+.desc {
+font-size: 13px;
+margin-bottom: 10px;
+}
+
+.genre {
+font-size: 14px;
+color: lightgray;
+}

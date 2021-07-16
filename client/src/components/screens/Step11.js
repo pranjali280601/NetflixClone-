@@ -1,10 +1,13 @@
 import React, { useState } from "react"
 import { useHistory } from 'react-router-dom'
+
 import { useDispatch } from "react-redux"
-import M from "materialize-css"
-import logo from "../../images/logo.png"
 import { userAction } from "../../Redux/Reducer/user/user.action" 
+
+import SignUpNavbar from "../SignUpNavbar"
+import M from "materialize-css"
 import "../style/Step11.css"
+
 
 const Step11 = () =>{
 
@@ -44,10 +47,8 @@ const Step11 = () =>{
     }
 
     return (
-        <div className= "nav nav-black">
-            <div className="nav-contents">
-            <img className = "nav-logo" src = {logo} alt = "" />    
-            <a href="/signin" className= "nav-tab">Sign Out</a>
+        <div>
+            <SignUpNavbar />
             <div className = "step11-body">
             <div className='step11-mycard'>
             <div className='step11-auth-card step11-input-field' >
@@ -85,7 +86,7 @@ const Step11 = () =>{
                
                 
             </div>
-        </div>
+        
     )
 
 }

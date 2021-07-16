@@ -1,6 +1,7 @@
 import React from "react"
 import {useHistory} from 'react-router-dom'
-import logo from "../../images/logo.png"
+
+import SignUpNavbar from "../SignUpNavbar"
 import "../style/Step1.css"
 
 const SubscribePlan = () =>{
@@ -8,10 +9,8 @@ const SubscribePlan = () =>{
 
     return (
         
-        <div className= "nav nav-black">
-            <div className="nav-contents">
-            <img className = "nav-logo" src = {logo} alt = "" />    
-            <a href="/signin" className= "nav-tab">Sign Out</a>
+        <div>
+            <SignUpNavbar />
             <div className = "step1-body">
             <div className='step1-mycard'>
             <div className='step1-auth-card' >
@@ -25,11 +24,7 @@ const SubscribePlan = () =>{
                </div>
                </div>
             </div>
-            </div>  
-        </div>
-       
-        
-        
+            </div>    
     )
 
 }

@@ -8,8 +8,6 @@ import '../style/Home.css'
 const Home=()=>{
     return (
         <div className = "home-screen">
-        {/* <div className = "home-bg"> */}
-            {/* <div className = "home-body"> */}
            <Navbar />
            <Banner />
            <Row 
@@ -38,9 +36,7 @@ const Home=()=>{
            fetchURL = { requests.fetchTopRatedShows }
            isLargeRow
            />
-           </div>
-        // </div>
-        //  </div>
+        </div>
 
     )
 }

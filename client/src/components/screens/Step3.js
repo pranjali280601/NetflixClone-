@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {useHistory, useLocation} from 'react-router-dom'
 import {connect} from "react-redux"
-import logo from "../../images/logo.png"
+
 import "../style/Step3.css"
+import SignUpNavbar from "../SignUpNavbar";
 
 
 const Step3 = () =>{
@@ -79,10 +80,8 @@ const Step3 = () =>{
       };
 
     return (
-      <div className= "nav nav-black">
-      <div className="nav-contents">
-      <img className = "nav-logo" src = {logo} alt = "" />    
-      <a href="/signin" className= "nav-tab">Sign Out</a>
+        <div>
+        <SignUpNavbar />
             <div className = "step2-body">
             <div className='step2-mycard'>
             <div className='step3-auth-card' >
@@ -109,7 +108,7 @@ const Step3 = () =>{
                
                 
          </div>
-        </div>
+      
     )
 
 }

@@ -7,26 +7,9 @@
     z-index: 1;
     padding: 20px; 
     color: white;
-    top: 100%;
+    top: 15%;
     left: 0;
     right: 0;
-}
-.step2-body h1{
-    color: black;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-top: -10px;
-}
-.step2-body h2{
-    color: black;
-    font-size: 1rem;
-    font-weight: 400;
-
-}
-.step2-body h3{
-    color: black;
-    font-size: 1.1rem;
-    margin-top: -10px;
 }
 
  .step2-mycard{

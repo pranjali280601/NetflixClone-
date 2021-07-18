@@ -53,7 +53,7 @@ const SignIn=()=>{
             <div className = "signin-body">
             <div className='signin-mycard'>
             <div className='signin-card signin-auth-card signin-input-field ' >
-                <h2>Sign In</h2>
+                <h2 style={{color:"white"}}>Sign In</h2>
                 <input 
                 type="email"
                 placeholder="email"

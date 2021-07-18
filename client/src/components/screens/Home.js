@@ -7,6 +7,7 @@ import '../style/Home.css'
 
 const Home=()=>{
     return (
+        <div className="home">
         <div className = "home-screen">
            <Navbar />
            <Banner />
@@ -36,6 +37,7 @@ const Home=()=>{
            fetchURL = { requests.fetchTopRatedShows }
            isLargeRow
            />
+        </div>
         </div>
 
     )

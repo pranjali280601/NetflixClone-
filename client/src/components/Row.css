@@ -4,12 +4,13 @@
 
 }
 .row h2{
-    font-size: 1rem;
+    font-size: 1.2rem;
+    color: white;
 }
 .row-posters{
     display: flex;
     overflow-y: hidden;
-    overflow-x: scroll;
+    overflow-x: auto ;
     padding: 20px;
 }
 .row-posters::-webkit-scrollbar{

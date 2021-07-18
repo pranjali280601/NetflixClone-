@@ -7,8 +7,9 @@ import '../style/Home.css'
 
 const Movies = () => {
     return (
+        <div className = "home">
         <div className = "home-screen">
-            <div className = "home-bg">
+            
             <Navbar />
             <Banner />
             <Row 

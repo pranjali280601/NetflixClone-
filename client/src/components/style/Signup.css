@@ -17,8 +17,11 @@
       rgba(0,0,0,0.8) 100%
   );
 }
+.screen{
+  background: black;
+}
 .signup-logo{
-  position: fixed;
+  position: absolute;
   top: 5px;
   left: 2%;
   width: 180px;
@@ -27,7 +30,7 @@
 }
 
 .signup-btn{
-  position: fixed;
+  position: absolute;
   right: 5%;
   top: 30px;
   padding: 10px 20px;
@@ -42,11 +45,10 @@
 
 .signup-body{
   position: absolute;
-  top: 15%;
+  top: 25%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  z-index: 1;
   padding: 20px; 
   color: white;
   left: 0;
@@ -56,26 +58,26 @@
 .signup-body h1{
   font-size:250%;
   font-weight: 700;
+  color: white;
   margin-bottom: 20px;
   
 }
 .signup-body h2{
   font-size: 200%;
   font-weight: 400;
+  color: white;
   margin-bottom: 30px;
   
 }
 .signup-body h3{
   font-size: 150%;
+  color: white;
   font-weight: 400;
 }
 
 .signup-input > form > input{
-  padding: 10px;
-  outline-width: 0;
   height: 30px;
   width: 20%;
-  background: white;
   border: none;
   max-width: 400px;
   text-decoration: none !important;
@@ -83,14 +85,8 @@
 }
 .signup-input > form > input[type = "email"], textarea{
   background: white;
-  
+  padding-left: 10px;
 }
-.signip-input > form > input[type = "email"]:focus {
-
-  border-bottom: none !important;
-  box-shadow:none !important;
-}
-
 .btn-get-started{
   padding: 16px 20px;
   font-size: 1rem;
@@ -125,55 +121,217 @@
   margin: auto;
   
 }
-.input-field input[type= email], textarea {
-  padding-left: 10px;
-  background: rgb(56, 55, 55);
-  border-radius: 5px;
- 
+
+
+
+:root{
+  --primary-color: #e50914;
+  --dark-color: #141414;
+  --light-color: #f4f4f4;
 }
-.input-field input[type= password], textarea {
-  padding-left: 10px;
-  background: rgb(56, 55, 55);
-  border-radius: 5px;
-  
+
+ul{
+  list-style: none;
 }
-.input-field input[type=email]:focus {
-  background: rgb(235, 246, 250);
-  border-bottom: none !important;
-  box-shadow:none !important;
+
+.card-0 , 
+.card-1,
+.card-2,
+.card-3{
+  border-top: 8px rgb(69, 69, 69) solid;
+  padding: 50%;
 }
-.input-field input[type=password]:focus {
-  background: rgb(235, 246, 250);
-  border-bottom: none !important;
-  box-shadow:none !important;
-}
-.banner{
+
+.card-0{
   position: relative;
-  height: 448px;
-  color: black;
-  object-fit: contain;
-  border-bottom: 10px solid rgb(61, 61, 61);
-  border-top: 10px solid rgb(61, 61, 61) ;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+  align-items: center;
+  padding: 5%;
 }
-.banner-contents{
-  margin-top: 10%;
-  margin-left: 30px;
-  padding: 2%;
-  height: 190px;
+.card-0 img{
+  width: 40%;
+}
+
+.desc-0{
+  padding-left: 10%;
+  width: 500px;
+}
+
+
+.card-1{
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+  align-items: center;
+  padding: 5%;
+}
+
+.desc-1{
+  padding-left: 50px;
+  width:500px;
+}
+
+.style-cards h1{
+  font-size: 3rem;
+  padding: 1rem;
+  padding-left: 0;
   color: white;
 }
-.banner-contents h1{
-font-weight: 600;
-font-size: 300%;
+
+.style-cards h3{
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: white;
 }
-.banner-contents h2{
-font-weight: 400;
-font-size: 200%;
+.card-1-bg{
+  background-image: url("https://cigars.roku.com/v1/http%3A%2F%2Fimage.roku.com%2Fw%2Frapid%2Fimages%2Foffers-landing-section%2F0087b0fd-af7c-44c0-9214-537bb6876c3e.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-left: 10%;
+  width: 400px;
+  height: 300px;
+  
 }
-.banner-img{  
-top: 10px;
-width: 70%;
-padding:5px;
-margin-top: 40px;
-margin-left: 70px;
+.card-1 video{
+  position: relative;
+  top: 10%;
+  left: 13%;
+  width: 73%;
+  height: 76%;
+  z-index: -1;
 }
+
+.card-2{
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+  align-items: center;
+  padding: 5%;
+}
+
+.desc-2{
+  padding-left: 10%;
+  width: 550px;
+}
+
+.card-3{
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
+  align-items: center;
+  padding: 5%;
+  border-bottom: 8px rgb(69, 69, 69) solid;
+  
+}
+
+.desc-3{
+  padding-left: 50px;
+  width:500px;
+}
+.card-3-bg{
+  background-image: url("https://raw.githubusercontent.com/techiecoder2079/Netflix-Clone/main/4.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-left: 10%;
+  width: 450px;
+  height: 300px;
+}
+
+.card-3 video{
+  position: relative;
+  top: -1%;
+  left: 17%;
+  width: 65%;
+  height: 76%;
+  z-index: -1;
+}
+
+.faq{
+  text-align: center;
+ 
+}
+
+.faq h1{
+  padding-top: 50px;
+  padding-bottom: 40px;
+  font-size: 3rem;
+  color: white;
+}
+
+.collapsible{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 40%;
+  border: none !important;
+  align-items: center;
+  z-index: 1;
+}
+
+.collapsible li{
+  padding-left: 10px;
+  margin: 5px;
+  font-size: 2rem;
+  background-color: #303030;
+  color: white;
+  text-align: left;
+  width: 50%;
+}
+.collapsible-header{
+  background-color: #303030;
+  border: none;
+}
+.collapsible-body{
+  background-color: #303030;
+  border: none;
+}
+.faq p{
+  padding-top: 5px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+
+.footer{
+  margin-top: 5%;
+  max-width: 100%;
+  padding: 2%;
+  
+  overflow: auto;
+  border-top: 8px rgb(69, 69, 69) solid;
+}
+
+.footer ,
+.footer a{
+  color: #999999;
+  font-size: 1rem;
+  
+ 
+}
+
+.footer p{
+  color: #999999;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+.footer ul{
+  display: flex;
+  flex-direction: column;
+  font-weight: 100;
+}
+.card-2 img{
+  width: 40%;
+}
+@media only screen and (max-width: 800px) {
+  .card-0 img{
+    width: 100%;
+  }
+  .card-2 img{
+    width: 100%;
+  }
+}
+

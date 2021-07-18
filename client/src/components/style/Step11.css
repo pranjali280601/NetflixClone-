@@ -6,10 +6,11 @@
     text-align: left;
     z-index: 1;
     padding: 20px; 
-    color: white;
+    color: black;
     left: 0;
     right: 0;
 }
+
 .step11-mycard{
     margin-top: 5%;
     margin-left: auto;
@@ -51,14 +52,4 @@
     border:1px solid black;
     border-radius: 2px;
     height: 60px;
-}
-
-.step11-input-field input[type=email]:focus { 
-    box-shadow: none !important;
-}
-.step11-input-field input[type=password]:focus {
-    box-shadow:none !important;
-}
-.step11-input-field input[type=text]:focus { 
-    box-shadow: none !important;
 }

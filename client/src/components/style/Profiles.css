@@ -29,6 +29,7 @@
 .profile-content h3{
   width: 100%;
   color: #fff;
+  padding: 20px;
   font-size: 16px;
   text-align: center;
   font-weight: 400;
@@ -42,7 +43,7 @@
 
 .profile-content img{
   width: 100%;
-  max-width: 150px;
+  max-width: 140px;
   height: auto;
   border: 3px solid black;
   border-radius: 15px;
@@ -66,6 +67,13 @@
 .profile-content :last-of-type{
     margin-right: 0;
 }
+.modal{
+  padding: 10px;
+}
+.modal-content{
+  background-color: white;
+  padding: 10px;
+}
 .delete-btn{
  
   color: white;
@@ -73,10 +81,10 @@
   border: 1px solid rgb(158, 152, 152);
   border-radius: 2px;
   height: 40px;
-  width: 30%;
+  width: 50%;
   text-align: center;
   font-weight: 500;
   margin-top: 40px;
-  margin-left: 35%;
+  margin-left: 25%;
   cursor: pointer;
 }

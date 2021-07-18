@@ -124,7 +124,7 @@ const Profile = () =>{
                                 <h3>{name}</h3>
                             </li>
 
-                        )) : <h2>Loading</h2>
+                        )) : <h2 style={{color:"white"}}>Loading</h2>
                         
                     }
                         
@@ -133,7 +133,7 @@ const Profile = () =>{
                                 <h3>Add Profile</h3></li>
                     </ul>
                     <button className="delete-btn" 
-                        onClick={()=>{M.Modal.getInstance(deleteprofileModal.current).open()}}> Delete Profile
+                        onClick={()=>{M.Modal.getInstance(deleteprofileModal.current).open()}}>D E L E T E &nbsp;  P R O F I L E 
                         </button>
                 </div>
 
@@ -163,7 +163,7 @@ const Profile = () =>{
                                     className="collection-item">{item}</h5>
                                     
                             })
-                            : <h3>Loading</h3>
+                            : <h3 style={{color:"white"}}>Loading</h3>
                         }
                         </div>
                     </div>

@@ -82,16 +82,31 @@ console.log(movie)
 
         </header>
         <div id="modal1" className=" banner-modal modal" ref={profileModal} >
-          <div className="modal-content">
-              <img src = {`https://image.tmdb.org/t/p/original/${movie && movie.backdrop_path}`} 
-              style={{width:"100%", margin:"5px"}} alt="" />
-              <h3>Name: {movie && movie.name}</h3>
-              <h3>Overview:  {movie && movie.overview}</h3>
+          <div className="modal-content modal-banner"
+          style = {{
+            backgroundSize: "cover",
+            backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie && movie.backdrop_path}")`,
+            backgroundPosition: "center center",
+        }}>
+            <div className = "fade-bottom" />
+        </div>
+             <div className="hello">
+              <div className="row">
+                <div className="col s6 m6 l6">
+              
+              <h1 style={{color:"white"}}>{movie && movie.name}</h1>
+              <h3>{movie && movie.overview}</h3>
+              </div>
+              <div className="col s6 m6 l6">
+                  <br></br>
               <h3>Popularity: {(movie && movie.popularity)}</h3> 
             <h3>Release Date: {movie && movie.first_air_date}</h3>
             <h3>Rating: {movie && movie.vote_average}</h3>
-    </div>
-    <div className=" modal-footer #000000 black">
+            </div>
+            </div>
+            </div>
+    
+    <div className=" modal-footer foot">
       <button className="modal-close waves-effect waves btn-flat" 
       style={{color:"white"}}
       onClick={()=>{M.Modal.getInstance(profileModal.current).close()}}> Close

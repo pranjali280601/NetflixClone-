@@ -89,6 +89,7 @@ const Step3 = () =>{
                 <h2>STEP 3 OF 3</h2>
                 <h1>Set up your payment</h1>
                 <h3> Your membership starts as soon as you set up payment.</h3>
+                <br></br>
                 <h3 style={{fontWeight:"bold"}}>No commitments.Cancel online anytime.</h3>
                 
                 <button className="step3-btn-style #ffffff white"

@@ -64,9 +64,7 @@ const Row = ({ title, fetchURL, isFirstRow = true}) =>{
                     onMouseLeave={() => setIsHovered(false)}
                     onClick = {() => handleClick(movie)}
                     src = {`${baseURL}${isFirstRow ? movie.poster_path : movie.backdrop_path}`} alt ={movie.name}
-                     />
-                   
-                    
+                    />
                     )
                     )}
                  

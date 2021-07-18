@@ -44,14 +44,14 @@ td{
     font-weight: 600;
 
 }
-.pricing-btn-style :focus{
-    background-color: #e50914 !important;
-}
+
 .pricing-btn-style :hover{
     background-color: #e50914 !important;
+    border: 2px solid white !important;
 }
 .pricing-btn-style :active{
     background-color: #e50914 !important;
+    border: 2px solid white;
 }
 .btn-continue{
     font-size: 80%;

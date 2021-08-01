@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 
-const PaymentStatus = ({ match }) => {
+const PaymentStatus = () => {
   const location = useLocation()
   const history = useHistory()
+  const {paymentId} = useParams()
+
   const [values, setValues] = useState({
     amount: "",
     error: "",
@@ -17,16 +19,13 @@ const PaymentStatus = ({ match }) => {
 
   const { amount, error } = values;
   
-  const str = location.pathname
-  const paymentId = str.substring(str.lastIndexOf('/') + 1)
-
   useEffect(() => {
-    console.log("Inside")
+    
     getPaymentStatus(paymentId);
   }, []);
 
   const getPaymentStatus = (paymentId) => {
-    console.log("Inside")
+    
     fetch(`/payments/${paymentId}/${user_id}`, {
       method: "GET",
       headers: {

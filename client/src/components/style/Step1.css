@@ -12,17 +12,17 @@
 }
 
 .step1-mycard{
-margin-left: auto;
-margin-right: auto;
-border:none !important;
+    margin-left: auto;
+    margin-right: auto;
+    border:none !important;
 }
 .step1-auth-card{
-border:none !important;
-padding-top: 1px;
-padding: 50px;
-text-align: center;
-max-width: 430px;
-margin: auto;
+    border:none !important;
+    padding-top: 1px;
+    padding: 50px;
+    text-align: center;
+    max-width: 430px;
+    margin: auto;
 }
 .btn-style{
     font-size: 1.1rem;

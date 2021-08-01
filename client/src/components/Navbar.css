@@ -12,12 +12,6 @@
      transition-timing-function: ease-in;
      transition: all 0.5s;
  } 
-
- .home-nav-contents{
-     display: flex;
-     justify-content: space-between;
- }
-
  .home-nav-black{
     background-color: #111 !important;
  }
@@ -63,67 +57,10 @@
     right: 80px;
     margin: 8px;
  }
- .nav-search{
-    margin-left: 80%;
-    width:10%;
- }
- .nav-search input[type=text] {
-    width: 1% ;
-    font-size: 12px ;
-    color: white ;
-    border-bottom: none !important;
-    background-image: url("https://www.pinclipart.com/picdir/big/142-1425732_google-web-search-icon-search-icon-png-white.png");
-    background-size: 120%; 
-    background-repeat: no-repeat;
-    box-shadow: none !important;
-    cursor: pointer;
-    height: 10% ;
-    padding: 10px;
-    -webkit-transition: width 0.4s ease-in-out !important;
-    transition: width 0.4s ease-in-out !important;
-  } 
-  
-  .nav-search input[type=text]:focus {
-    border: 1.5px solid #ccc !important;
-    background-image: none !important;
-    border-radius: 2px !important;
-    width: 80% !important;
-    box-shadow: none !important;
-  }
- 
-li a{
-    display: block;
-    padding: 8px;
-    font-size: 0.9rem;
-    font-family: 'Work Sans', sans-serif;
-    color: white;
-    text-decoration: none;
-}
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-li {
-    float: right;
-}
-  
 li a:hover {
     color: rgb(57, 57, 57);
   }
-.btn{
-    background-color: transparent;
-    font-size: 1rem;
-    width: 120%;
-    box-shadow: none;
-    text-transform: capitalize ;
-}
-.btn:hover{
-    background-color: transparent;
-}
-.btn:active{
-    background-color: transparent;
-}
+
 .dropdown-content{
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
@@ -134,20 +71,3 @@ li a:hover {
     text-align: center;
     
 } 
-.profiless{
-    margin-left: 500px;
-    cursor: pointer;
-}
-
-.options {
-      display: none;
-      background-color: pink;
-      border-radius: 5px;
-      display: flex;
-        flex-direction: column;
-        position: absolute;
-    }
-.options span {
-      padding: 10px;
-      cursor: pointer;
-    }

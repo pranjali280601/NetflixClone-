@@ -60,8 +60,6 @@ const Row = ({ title, fetchURL, isFirstRow = true}) =>{
                     <img
                     className = {`row-poster ${isFirstRow && "row-posterLarge"}`}
                     key = {movie.id}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
                     onClick = {() => handleClick(movie)}
                     src = {`${baseURL}${isFirstRow ? movie.poster_path : movie.backdrop_path}`} alt ={movie.name}
                     />

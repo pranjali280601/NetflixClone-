@@ -1,14 +1,10 @@
-.screen{
-    position: relative;
-    height: 100%;
-}
 table{
     color: black;
     margin-left: auto;
     margin-right: auto;
     left: 0;
     right: 0;
-    max-width: 60%;
+    max-width: 80%;
 }
 
 thead th{
@@ -18,55 +14,56 @@ thead th{
 td{
     text-align: center;
 }
-.pricing-body{
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    top: 10%;
-    
-    text-align: left;
-    padding: 20px; 
-   
-}
 
+.heading{
+    margin-left: 10%;
+    margin-right: 10%;
+}
 .pricing-btn-style{
     font-size: 80%;
     color: #fff;
-    background-color: #fc8d92 !important;
-    opacity: 1;
+    background-color: #fc8d92;
+    z-index: 0;
     border: none;
     border-radius: 4px;
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
     margin: 0.5%;
     font-weight: 600;
 
 }
-
-.pricing-btn-style :hover{
-    background-color: #e50914 !important;
-    border: 2px solid white !important;
+.color{
+    color: red;
 }
 .pricing-btn-style :active{
     background-color: #e50914 !important;
-    border: 2px solid white;
 }
+.pricing-btn-style :focus{
+    background-color: #e50914 !important;
+}
+.pricing-btn-style :hover{
+    background-color: #e50914 !important;
+}
+
+
 .btn-continue{
-    font-size: 80%;
+    font-size: 20px;
     color: #fff;
     background-color: #e50914 ;
     border: none;
     border-radius: 4px;
     height: 50px;
     width: 400px;
-    margin: 0.5%;
-    font-weight: 600;
+    font-weight: 400;
+
+}
+.btn-align{
+    text-align: center;
 }
 .setup{
     position: absolute;
-    top: 0;
-    text-align: center;
+    top: 10%;
     padding: 20px; 
+    margin-left: auto;
+    margin-right: auto;
 }

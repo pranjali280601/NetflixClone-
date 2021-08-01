@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 import { useDispatch } from "react-redux"
 import { userAction } from "../../Redux/Reducer/user/user.action" 
@@ -13,11 +13,12 @@ const Step11 = () =>{
 
     const history=useHistory()
     const dispatch = useDispatch()
-    
     const[password, setPassword] = useState("")
-    const[email, setEmail] = useState("")
     const [name, setName] = useState("")
+    const { data } = useLocation()
+    const [email, setEmail] = useState(data)
     
+    console.log("Email", email)
 
     const PostData=()=>{
         fetch("/signup",{
@@ -54,8 +55,10 @@ const Step11 = () =>{
             <div className='step11-auth-card step11-input-field' >
                 <h2>STEP 1 OF 3</h2>
                 <h1>Create a password to start your membership</h1>
-                <h3>Just a few more steps and you're done!</h3>
-                <h3>We hate paperwork, too.</h3>
+                
+                <h3>Just a few more steps and you're done!
+                <br></br>
+                We hate paperwork, too.</h3>
                 <input 
                 type="text"
                 placeholder="name"
@@ -80,11 +83,7 @@ const Step11 = () =>{
                 </button>
                </div>
                </div>
-                
             </div>
-                    
-               
-                
             </div>
         
     )

@@ -1,11 +1,12 @@
 import React from "react"
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import SignUpNavbar from "../SignUpNavbar"
 import "../style/Step1.css"
 
 const Step1 = () =>{
     const history = useHistory()
-
+    const { data } = useLocation()
+    
     return (
         <div>
             <SignUpNavbar />
@@ -20,7 +21,10 @@ const Step1 = () =>{
                 <h1>Finish setting up your account</h1>
                 <h3>Netflix is personalised for you. Create a password to watch on any device at any time.</h3>
                 <button className="btn-style #f44336 red"
-                 onClick={()=>{history.push('/step11')}}>
+                 onClick={()=>{history.push({
+                                                pathname: '/step11',
+                                                data: data 
+                                            })}}>
                     Continue    
                 </button>
                </div>

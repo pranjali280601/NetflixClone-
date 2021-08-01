@@ -59,8 +59,7 @@ const Banner=()=>{
     }
 console.log(movie)
     return (
-        <div className = "home-screen">
-        <div className = "home-bg">
+        <div>
         <header className = "home-banner" style = {{
             backgroundSize: "cover",
             backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie.backdrop_path}")`,
@@ -114,7 +113,7 @@ console.log(movie)
     </div>
   </div>
         </div>
-        </div>
+       
     )
 }
 

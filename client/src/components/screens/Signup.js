@@ -18,13 +18,18 @@ const Signup = () =>{
         {
           return M.toast({html: "Invalid email",classes:"#f44336 red"})
         }
-        history.push("/step1")
+        
+        history.push({
+            pathname: '/step1',
+            data: email 
+          })
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems);
       });
+
     return (
         <div className="screen">
     <div className = "signup-screen">

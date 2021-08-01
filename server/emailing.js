@@ -1,19 +1,20 @@
 const nodemailer=require('nodemailer')
-const sendgridTransport=require('nodemailer-sendgrid-transport')
+// const sendgridTransport=require('nodemailer-sendgrid-transport')
 
-
-const transporter=nodemailer.createTransport(sendgridTransport({
-    auth:{
-        api_key:process.env.SENDGRID_API
+const transporter=nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'pranjalsharma2806@gmail.com',
+        pass: process.env.PASS_KEY
     }
-}))
+})
 module.exports = {
     signUpEmail : function(user){
         transporter.sendMail({
             to:user.email,
             from:"pranjalsharma2806@gmail.com",
             subject:"Signup Success",
-            html:"<h1>Welcome to Netflix</h1?"
+            html:"<h1>Welcome to Netflix</h1>"
         })
     },
 

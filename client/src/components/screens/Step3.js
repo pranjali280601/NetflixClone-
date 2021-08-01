@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useHistory, useLocation} from 'react-router-dom'
+import {useHistory, useLocation, useParams} from 'react-router-dom'
 import {connect} from "react-redux"
 
 import "../style/Step3.css"
@@ -18,8 +18,8 @@ const Step3 = () =>{
         success: false,
       });
       const { orderId } = values
-      const str = location.pathname
-      const amount = str.substring(str.lastIndexOf('/') + 1)
+      const {amount} = useParams()
+      
       const user_id = userObj._id
       const createOrder = async() => {
         fetch(`/createorder/${amount}`, {

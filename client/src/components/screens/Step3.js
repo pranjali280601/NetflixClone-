@@ -56,7 +56,7 @@ const Step3 = () =>{
       const showRazoryPay = () => {
         console.log("Inside")
         const form = document.createElement("form");
-        form.setAttribute("action",'http://localhost:7000/payment/callback');
+        form.setAttribute("action",'/payment/callback');
         form.setAttribute("method", "POST");
         
     
